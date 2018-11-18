@@ -3,7 +3,7 @@
     connectDB();
 
     $data = $_POST;
-    //Выход (условие внутри)
+    //Выход (условие внутри файла)
     require "functions/index.php";
 
     $ad = getAd(10, "a_delete = 'FALSE'");       
