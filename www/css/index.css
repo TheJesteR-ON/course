@@ -1,0 +1,157 @@
+header {
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: #313844/*#393539#99b3ff*/;
+    box-shadow: 0px 3px 9px grey;
+}
+header div{
+    float: left;
+    height: 100%;
+}
+header div a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+header div a:hover, .dropdown-exit:hover{
+    color: black;
+    background-color: /*#e6ecff*/white;
+}
+
+#right{
+    position: absolute;
+    right: 10px;
+}
+
+header div a #main_letter{
+    color: rgb(255, 174, 0);
+}
+.action-button{
+    background-color: rgb(219, 151, 3);
+    color: black;
+    border-radius: 3px;
+}
+.action-button:hover{
+    background-color: rgb(255, 174, 0);
+    color: white;
+}
+/*Конец*/
+
+
+/*Список в меню*/
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #313844;
+    color:white;
+    width: 150px;
+    height: 115px;;
+}
+
+.dropdown-menu a {
+    display: block;
+}
+
+.dropdown-exit{
+    color:white;
+    position: absolute;
+    width: 150px;
+    background-color: #313844;
+    height: 33%;
+    border: 0;
+}
+
+.dropdown:hover .dropdown-menu {display: block;}
+/*Конец*/
+
+
+/*Стили для Footer*/
+footer{
+    width: 100%;
+    background-color: #7087a4;
+}
+footer div{
+    height: 40px;
+    text-align: center;
+    font-size: 120%;
+    color: white;
+}
+/*Конец*/
+
+
+/*Стили для "login, signup"*/
+#registration{
+    background-color: /*rgb(204, 217, 255)*/ #e0e9f2;
+    width: 40%;
+    height: auto;
+    margin: 9% auto;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px grey;
+}
+#registration input{
+    font-size: 13px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    display: block;
+    margin: 4px auto;
+    padding: 5px;
+    width: 80%;
+    height: 25px;
+}
+#registration input:focus{
+    box-shadow: 0px 0px 7px #495466 
+}
+input[type = "submit"]{
+    margin-bottom: 100px;
+}
+#main_word{
+    font-size: 130%;
+    margin: 10px 0px;
+}
+form span, form small{
+    text-align: center;
+    display: block;
+}
+/*Конец*/
+
+
+/*Стили для страницы "detailsAd"*/
+.left{
+    width: 70%;
+    display: inline-block;
+    border: 1px solid black;
+}
+/*Конец*/
+
+
+/*Стили для страницы "index.php"*/
+.content-block{
+     border: 1px solid grey;
+     box-shadow: 0px 0px 4px grey;
+     border-radius: 3%;
+     width: 20%;
+}
+.content-block:hover{
+    box-shadow: 0px 0px 8px grey;
+}
+.content-table{
+    border-spacing: 11px 21px;
+    text-align: center; 
+    width: 100%;
+}
+.img-back{
+    color: #e0e9f2;
+}
+/*Конец*/
+
+
+body{
+    background: #e0e9f2 /*url("../Images/Background.jpg") no-repeat fixed center*/;
+    margin: 0%;
+}
