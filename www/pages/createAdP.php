@@ -11,6 +11,9 @@
         $title = "Создание обьявления";
         require_once "../blocks/head.php";
     ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../js/createAd.js"></script>
 </head>
 <body>
     <?php
@@ -69,8 +72,9 @@
                     <input required type="text" name="descr"><br>
 
                     Фото
-                    <input required type="file" name="userfile"><br>
-                    
+                    <input required type="file" id = "imgInput" name="userfile[]" multiple /><br>
+                    <div id = "showImages"><img id="image" src="#" alt="" /></div><br>
+
                     <input type="submit" name = "do_publish" value="Опубликовать">
                 </form>
             </fieldset>';
