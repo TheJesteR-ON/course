@@ -67,8 +67,10 @@
                     <input required type="text" name="price"><br>
                     Описание
                     <input required type="text" name="descr"><br>
+
                     Фото
                     <input required type="file" name="userfile"><br>
+                    
                     <input type="submit" name = "do_publish" value="Опубликовать">
                 </form>
             </fieldset>';
