@@ -47,7 +47,7 @@
             $key = $_GET['key'];
             if(checkActivateLink($login, $key)){
                 activateUser($login);
-                echo '<script type="text/javascript">window.location.href = "https://ddme.000webhostapp.com/pages/loginP.php?active=activation"</script>';
+                echo '<script type="text/javascript">window.location.href = "../pages/loginP.php?active=activation"</script>';
             }else{
                 echo '<div style = "color: red;">Активация провалена</div>';
             }
@@ -62,7 +62,7 @@
             VALUES (NULL, '$in_login', '$in_email', '$in_password','$activation' , '', '');";
             $mysqli->query($sql);
     
-            mail("$in_email", "Registration", "https://ddme.000webhostapp.com/pages/signupP.php?login=$in_login&key=$activation");
+            mail("$in_email", "Registration", "annow.zzz.com.ua/pages/signupP.php?login=$in_login&key=$activation");
         }
     
         function getActivateLink($login){ //Создание кода активации для ссылки

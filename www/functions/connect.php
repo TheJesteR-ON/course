@@ -3,9 +3,9 @@
         global $mysqli;
 
         $servername = "localhost";
-        $username = "id7095807_admin";
-        $password = "d160612d";
-        $database = "id7095807_database";
+        $username = "TheJesteRON";
+        $password = "Dls2389d";
+        $database = "thejester_on";
 
         $mysqli = new mysqli($servername, $username, $password, $database);
         if($mysqli->connect_error){

@@ -20,11 +20,11 @@
     for($i = 0; $i < count($ad); $i++){
             echo '
             <div style = "border: 1px solid grey;">
-                <a href = "https://ddme.000webhostapp.com/pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
+                <a href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
                     <img width = "200px" src="../Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'"><br>
                     <h2>'.$ad[$i]['a_title'].'</h3>
                 </a>
-                <a href = "https://ddme.000webhostapp.com/pages/createAdP.php?updateId='.$ad[$i]['a_id'].'">Редактировать </a>
+                <a href = "../pages/createAdP.php?updateId='.$ad[$i]['a_id'].'">Редактировать </a>
                 <form action="My_page.php" method="post">
                     <input type = "text" name = "deleteId" value = "'.$ad[$i]['a_id'].'" style ="display: none;">
                     <input type = "submit" name = "do_delete" value = "Удалить">

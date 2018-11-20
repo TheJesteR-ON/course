@@ -14,7 +14,7 @@
                     echo '
                     <td class = "content-block">
                         <div>
-                            <a href = "https://ddme.000webhostapp.com/pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
+                            <a href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
                                 <div class = "img-back">
                                     <img height = "150px" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'"><br>
                                 </div>

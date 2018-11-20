@@ -24,7 +24,7 @@
             if(empty($errors)){
                 //Если нет ошибок
                 $_SESSION['logged_user'] = $user;
-                echo '<script type="text/javascript">window.location.href = "https://ddme.000webhostapp.com/pages/My_page.php"</script>';
+                echo '<script type="text/javascript">window.location.href = "../pages/My_page.php"</script>';
             }
             else{
                 //Вывод ошибки

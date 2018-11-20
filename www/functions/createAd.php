@@ -49,8 +49,8 @@
     function saveAd($in_user, $in_title, $in_tag, $in_city, $in_descr, $in_price){
         global $mysqli;
 
-        $sql = "INSERT INTO `ad` (`a_id`, `u_id`, `a_time`, `a_title`, `a_tag`, `a_city`, `a_descr`, `a_views`, `a_comment`, `a_price`) 
-        VALUES (NULL, '$in_user', NULL, '$in_title', '$in_tag', '$in_city', '$in_descr', '0', '', '$in_price');";
+        $sql = "INSERT INTO `ad` (`a_id`, `u_id`, `a_title`, `a_tag`, `a_city`, `a_descr`, `a_views`, `a_comment`, `a_price`) 
+        VALUES (NULL, '$in_user', '$in_title', '$in_tag', '$in_city', '$in_descr', '0', '', '$in_price');";
 
         if ($mysqli->query($sql) === TRUE) {
             $er = 0;

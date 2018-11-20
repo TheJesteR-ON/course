@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ОЯ: Главная</title>
+    <title>ANNow: Главная</title>
     <link rel="stylesheet" href="css/index.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -39,7 +39,7 @@
                     echo '
                     <td class = "content-block">
                         <div>
-                            <a href = "https://ddme.000webhostapp.com/pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
+                            <a href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
                                 <div class = "img-back">
                                     <img height = "150px" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'"><br>
                                 </div>
