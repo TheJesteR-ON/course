@@ -65,7 +65,7 @@
             mail("$in_email", "Registration", "annow.zzz.com.ua/pages/signupP.php?login=$in_login&key=$activation");
         }
     
-        function getActivateLink($login){ //Создание кода активации для ссылки
+        function getActivateLink($login){ //Создание кода активации для ссылки 1
             $secret = "Danil";
             return md5($secret.$login);
         }
