@@ -24,7 +24,7 @@
                     <img width = "200px" src="../Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'"><br>
                     <h2>'.$ad[$i]['a_title'].'</h3>
                 </a>
-                <a href = "../pages/createAdP.php?updateId='.$ad[$i]['a_id'].'">Редактировать </a>
+                <a href = "../pages/editAd.php?updateId='.$ad[$i]['a_id'].'">Редактировать </a>
                 <form action="My_page.php" method="post">
                     <input type = "text" name = "deleteId" value = "'.$ad[$i]['a_id'].'" style ="display: none;">
                     <input type = "submit" name = "do_delete" value = "Удалить">

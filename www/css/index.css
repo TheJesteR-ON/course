@@ -8,7 +8,7 @@ header {
 }
 header div{
     float: left;
-    height: 100%;
+    height: auto;
 }
 header div a{
     text-decoration: none;
@@ -27,7 +27,7 @@ header div a:hover, .dropdown-exit:hover{
     right: 10px;
 }
 
-header div a #main_letter{
+#main_letter{
     color: rgb(255, 174, 0);
 }
 .action-button{
@@ -93,6 +93,7 @@ footer div{
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px grey;
+text-align: center;
 }
 #registration input{
     font-size: 13px;
@@ -113,11 +114,9 @@ input[type = "submit"]{
 #main_word{
     font-size: 130%;
     margin: 10px 0px;
+display: block;
 }
-form span, form small{
-    text-align: center;
-    display: block;
-}
+
 /*Конец*/
 
 
@@ -136,6 +135,7 @@ form span, form small{
      box-shadow: 0px 0px 4px grey;
      border-radius: 3%;
      width: 20%;
+    background-color: #ffffff;
 }
 .content-block:hover{
     box-shadow: 0px 0px 8px grey;
@@ -146,8 +146,20 @@ form span, form small{
     width: 100%;
 }
 .img-back{
-    color: #e0e9f2;
+    background-color: #e0e9f2;
+margin: 7px;
 }
+/*Конец*/
+
+
+/*Стили для страницы "createAd.php"*/
+  .img-thumbnail {
+    height: 100px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+
+  
 /*Конец*/
 
 

@@ -11,77 +11,64 @@
         $title = "Создание обьявления";
         require_once "../blocks/head.php";
     ?>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../js/createAd.js"></script>
 </head>
 <body>
     <?php
         require_once "../blocks/header.php";
     
         $data = $_POST;
-        if(isset($data['do_publish']) || isset($data['do_edit'])){
+        if(isset($data['do_publish'])){
                 echo '<br><p style = "color: green;">Обьявление было успешно опубликовано на <a href = "../index.php">Главную страницу</a></p>';
             }
             else{
-                if(isset($_GET['updateId'])){
-                    $ad = findAd("a_id = ".$_GET['updateId']."");
-                    echo '
-        <br>
-        <fieldset>
-            <legend>Редактировать обьявление</legend>
-                <form action="createAdP.php" method = "POST" enctype="multipart/form-data">
-                    Загловок
-                    <input autofocus required type="text" name="title" value = "'.$ad['a_title'].'"><br>
-                    Категория
-                    <select required name="tag">
-                        <option value="dress">Одежда</option>
-                        <option value="service">Сервис</option>
-                        <option value="shoes">Обувь</option>
-                    </select><br>
-                    Цена
-                    <input required type="text" name="price" value = "'.$ad['a_price'].'"><br>
-                    Описание
-                    <input required type="text" name="descr" value = "'.$ad['a_descr'].'"><br>
-                    Фото
-                    <input required type="file" name="userfile"><br>
-
-                    <input style = "display: none;" type="text" name="id" value = "'.$ad['a_id'].'"><br>
-
-                    <input type="submit" name = "do_edit" value="Редактировать">
-                </form>
-            </fieldset>';
-                }
-                else{
             echo '
-        <br>
-        <fieldset>
+            <fieldset>
             <legend>Создание обьявления</legend>
                 <form action="createAdP.php" method = "POST" enctype="multipart/form-data">
-                    Загловок
+                    <label for = "Заголовок"> *</label>
                     <input autofocus required type="text" name="title"><br>
-                    Категория
+    
+                    <label for = "Категория"> *</label>
                     <select required name="tag">
                         <option value="dress">Одежда</option>
                         <option value="service">Сервис</option>
                         <option value="shoes">Обувь</option>
                     </select><br>
-                    Цена
-                    <input required type="text" name="price"><br>
-                    Описание
-                    <input required type="text" name="descr"><br>
-
-                    Фото
-                    <input required type="file" id = "imgInput" name="userfile[]" multiple /><br>
-                    <div id = "showImages"><img id="image" src="#" alt="" /></div><br>
-
+    
+                    <label for = "Цена"> *</label>
+                    <input pattern = "\d+(,\d{2})?" required type="text" name="price"><br>
+    
+                    <label for = "Состояние"> *</label>
+                    <select required name="condition">
+                        <option value="BU">Б/У</option>
+                        <option value="new">Новый</option>
+                    </select><br>
+    
+                    <label for = "Описание"> *</label>
+                    <textarea style = "resize: none; " required rows="10" cols="60" name="descr" ></textarea><br>
+                    
+                    <label for = "Фото"> *</label>
+                    <input required type="file" id="fileMulti" name="fileMulti[]" multiple accept="image/*" />
+                    <div class="row"><span id="outputMulti"></span></div>
+    
+                    <hr>
+                    <label for = "Данные пользователя"> *</label> <br>
+                    <input required type="text" name="numTel" placeholder = "Номер телефона"><br>
+                    <input required type="text" name="city" placeholder = "Город"><br>
+                    <hr>
+        
                     <input type="submit" name = "do_publish" value="Опубликовать">
                 </form>
-            </fieldset>';
-        };}
+            </fieldset>
+
+        ';
+        };
     ?>
+    
     <br>
     <?php require_once "../blocks/footer.php";?>
 
 </body>
 </html>
+<script src="../js/createAd.js"></script>
