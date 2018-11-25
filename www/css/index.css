@@ -9,8 +9,6 @@ header {
     margin: 0;
     background-color: #313844/*#393539#99b3ff*/;
     box-shadow: 0px 3px 9px grey;
-    position: fixed;
-    width: 100%;
 }
 header div{
     float: left;
@@ -38,15 +36,14 @@ header div a:hover, .dropdown-exit:hover{
 }
 .action-button{
     background-color: rgb(219, 151, 3);
-    color: black;
+    color: white;
     border-radius: 3px;
     font-weight: bold;
     font-size: 14px;
     padding: 9px;
 }
-.action-button:hover{
+.action-button:hover, .reg-button:hover{
     background-color: rgb(255, 174, 0);
-    color: white;
 }
 /*Конец*/
 
@@ -93,7 +90,7 @@ footer div{
 /*Конец*/
 
 
-/*Стили для "login, signup"*/
+/*Стили для " signup"*/
 #registration{
     background-color: /*rgb(204, 217, 255)*/ white;
     width: 50%;
@@ -103,13 +100,12 @@ footer div{
     border-radius: 5px;
     box-shadow: 0px 0px 15px grey;
     text-align: center;
-}
-#registration input{
+}.reg-input{
     font-size: 13px;
     border: 1px solid grey;
     border-radius: 2px;
     display: block;
-    margin: 4px auto;
+    margin: 4px auto ;
     padding: 5px;
     width: 80%;
     height: 25px;
@@ -117,30 +113,51 @@ footer div{
 #registration input:focus{
     box-shadow: 0px 0px 7px #495466 
 }
-input[type = "submit"]{
-    margin-bottom: 100px;
+.reg-button{
+    width: 85%;
+    background-color: rgb(219, 151, 3);
+    color: white;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px;
 }
-#main_word{
-    font-size: 130%;
+#reg-name{
+    font-size: 200%;
     margin: 10px 0px;
     display: block;
-    padding: 46% 0;
+    padding: 18% 0 20%;
+    color: white;
 }
 .reg-left{
-    width: 50%;
-    min-height: 100%; 
-    float: left; 
-    background: url(../Images/Background.jpg) no-repeat; 
-    background-size: cover;
+    background: #7087a4;/*url(../Images/Background.jpg) no-repeat*/; 
 }
-.reg-right{
-    width: 50%;
-    min-height: 100%;
-    margin-left: 50%;
+.reg-table{
+    width: 100%;
+    margin: auto;
 }
 
 /*Конец*/
 
+/*Стили для "login"*/
+.log-name{
+    font-size: 200%;
+    margin: 0px 0px;
+    text-align: center;
+    padding: 0 0 0;
+    color: white;
+}
+.log-block{
+    background: #7087a4; 
+    margin: 8% auto 15%; 
+    width: 35%; 
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+.log-button{
+    width: 40%; 
+}
 
 /*Стили для страницы "detailsAd"*/
 .left{
@@ -172,6 +189,8 @@ input[type = "submit"]{
 margin: 7px;
 }
 /*Конец*/
+
+
 
 
 /*Стили для страницы "createAd.php"*/
@@ -247,7 +266,7 @@ margin: 7px;
       border: solid 1px grey;
   }
 
-  */
+  
 /*Конец*/
 
 

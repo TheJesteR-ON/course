@@ -33,7 +33,8 @@
             if(empty($errors)){
                 //Если нет ошибок
                 saveUser($data['login'], $data['email'], password_hash($data['password'], PASSWORD_DEFAULT));
-                //echo '<div style="color: green;">Вам на почту выслано письмо-подтверждения аккаунта!</div><hr>';
+                echo '<br><p style = "color: green;">Вам на почту было выслано письмо для подтверждения аккаунта</p>';
+                
             }
             else{
                 //Вывод ошибки
@@ -62,7 +63,7 @@
             VALUES (NULL, '$in_login', '$in_email', '$in_password','$activation' , '', '');";
             $mysqli->query($sql);
     
-            mail("$in_email", "Registration", "annow.zzz.com.ua/pages/signupP.php?login=$in_login&key=$activation");
+            mail("$in_email", "Registration", "annow.zzz.com.ua/pages/signupP.php?login=$in_login&key=$activation", "From: jester-on@annow.zzz.com.ua");
         }
     
         function getActivateLink($login){ //Создание кода активации для ссылки
