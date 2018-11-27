@@ -26,8 +26,8 @@
     ?>
 
     <br>
-    <form id="target">
-        <input type="text" name="search" id="search_name">
+    <form class = "search-form" id="target">
+        <input class = "search-text" type="text" name="search" id="search_name">
     </form>
     <br>
     
@@ -38,21 +38,23 @@
                 for($i = 0; $i < count($ad); $i++){
                     echo '
                     <td class = "content-block">
-                        <div>
-                            <a href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
-                                <div class = "img-back">
-                                    <img height = "150px" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'"><br>
-                                </div>
-                                <h2>'.$ad[$i]['a_title'].'</h3>
-                            </a>
-                            <p>'.$ad[$i]['a_price'].'</p>
-                        </div>
+                        <a class = "content-a" href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
+                            <div>
+                                <img class = "content-img" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'">
+                                <div class = "content-block-bottom">
+                                    <h3>'.$ad[$i]['a_title'].'</h3>
+                                    <hr>
+                                    <p>'.$ad[$i]['a_price'].'</p>
+                                <div>
+                            </div>
+                        </a>
                     </td>';
-                    if(($i + 1) % 5 == 0){
+                    if(($i + 1) % 4 == 0){
                         echo '</tr> <tr>';
                     }
                 }
             ?>
+                    
             </tr>
         </table>
     </div>

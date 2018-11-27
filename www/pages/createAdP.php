@@ -51,11 +51,11 @@
                 <td style = "text-align: left;" class = "section"><label >Состояние <span class= "signRequired">*</span></label></td>
                 <td><div class="radios-as-buttons">
                         <div>
-                            <input checked type="radio" name="option" id="radio1" checked />
+                            <input checked type="radio" name="condition" id="radio1" value = "Новое" checked />
                             <label for="radio1">Новое</label>
                         </div>
                         <div>
-                            <input type="radio" name="option" id="radio2" />
+                            <input type="radio" name="condition" id="radio2" value = "Б/у"/>
                             <label for="radio2">Б/у</label>
                         </div>
                     </div><br></td>
@@ -70,13 +70,8 @@
                 <div class="row"><span id="outputMulti"></span></div></td>
             </tr>
         </table>
-        <hr>
-        <label class = "createForm-name">Данные пользователя <span class= "signRequired">*</span></label> <br>
-        <input class = "input" required type="text" name="numTel" placeholder = "Номер телефона"><br>
-        <input class = "input" required type="text" name="city" placeholder = "Город"><br>
-        <hr>
 
-        <input type="submit" name = "do_publish" value="Опубликовать">
+        <input class = "action-button" type="submit" name = "do_publish" value="Опубликовать">
     </form>
 </fieldset>
         ';}

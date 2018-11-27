@@ -63,7 +63,14 @@
         while (($row = $result->fetch_assoc()) != false)
             $array[] = $row;
         return $array;
-    } 
+    }
+
+    function getSql($sql){
+        global $mysqli;
+
+        $result = $mysqli->query($sql);
+        return resultToArray($result);
+    }
 
 /*END*/
 ?>
