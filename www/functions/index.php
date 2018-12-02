@@ -1,7 +1,5 @@
 <?php
-    if(isset($data['do_logout'])){
-        unset($_SESSION['logged_user']);
-    }
+    
     if(isset($_GET['search_name'])){
         require "connect.php";
         connectDB();

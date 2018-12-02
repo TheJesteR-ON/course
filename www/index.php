@@ -33,7 +33,7 @@
     
     <div class="showResult content">
         <table class ="content-table">
-            <tr>
+            <tr class = "content-row">
             <?php
                 for($i = 0; $i < count($ad); $i++){
                     echo '
@@ -50,7 +50,7 @@
                         </a>
                     </td>';
                     if(($i + 1) % 4 == 0){
-                        echo '</tr> <tr>';
+                        echo '</tr> <tr class = "content-row">';
                     }
                 }
             ?>

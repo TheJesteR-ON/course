@@ -19,7 +19,7 @@
     <div class="log-block">
         <div class="log-name">Авторизация</div><br>
         <form style = "margin: 0 auto; width: 90%;" class = "log-form" action="loginP.php" id="registration" method = "POST">
-            <img style = "margin: 20px auto 20px" width = "100px" src="Images/user_orange.png" alt="#">
+            <img style = "margin: 20px auto 20px" width = "100px" src="../Images/user_orange.png" alt="#">
             <input class = "reg-input" autofocus required type="email" name="email" id="email" placeholder="Введите E-mail"><br>
             <input class = "reg-input" required type="password" name="password" id="password" placeholder="Введите пароль"><br>
             <input class = "reg-button log-button" type="submit" name = "do_login" value="Войти">

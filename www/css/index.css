@@ -1,79 +1,71 @@
 *{
-    font-family: sans-serif;
+    font-family:'Lato', sans-serif;
     font-size: 13px;
 }
-header {
-    list-style-type: none;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    background-color: #313844/*#393539#99b3ff*/;
-    box-shadow: 0px 3px 9px grey;
-}
-header div{
-    float: left;
-    height: auto;
-}
-header div a{
+a{
     text-decoration: none;
+color: white;
+}
+header{
+    position: fixed;
+    width: 100%;
+    background: #3b5998;
+    margin: 0px;
+    color: white;
+    vertical-align: middle;
+}
+.logo{
+    margin-right: 30%;
+    font-size: 20px;
+}
+
+header div{
     display: inline-block;
-    padding: 10px 15px;
-    text-align: center;
-    color: white;
+    margin: 15px 15px;
+    float: left;
 }
-header div a:hover, .dropdown-exit:hover{
-    color: black;
-    background-color: /*#e6ecff*/white;
+.header-search-block{
+    margin-right: 9%;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
 }
-
-#right{
+.header-search{
+    width: 250px;
+    border: none;
+    height: 30px;
+}
+.search-img{
     position: absolute;
-    right: 0px;
+    right: 3px;
+    top: 3px;
 }
-
-#main_letter{
-    color: rgb(255, 174, 0);
-}
-.action-button{
-    background-color: rgb(219, 151, 3);
-    color: white;
+.header-button{
+    padding: 8px 13px;
+    background: #2fbdb4;
     border-radius: 3px;
-    font-weight: bold;
-    font-size: 14px;
-    padding: 9px;
 }
-.action-button:hover, .reg-button:hover{
-    background-color: rgb(255, 174, 0);
-}
-/*Конец*/
 
-
-/*Список в меню*/
-.dropdown-menu {
+.dropdown-menu{
+    text-decoration: none;
     display: none;
     position: absolute;
-    z-index: 1;
-    background-color: #313844;
-    color:white;
-    width: 150px;
-    height: 115px;;
+    right: 0;
+    top: 30px;
+    width: 140px;
+    background: white;
+    box-shadow: 0 0 5px grey;
+    border-radius: 3px;
 }
 
-.dropdown-menu a {
-    display: block;
+.dropdown-menu a{
+    color: #444444;
 }
+.dropdown:hover .dropdown-menu{display: block;}
 
-.dropdown-exit{
-    color:white;
-    position: absolute;
-    width: 150px;
-    background-color: #313844;
-    height: 33%;
-    border: 0;
-}
-
-.dropdown:hover .dropdown-menu {display: block;}
 /*Конец*/
+
 
 
 /*Стили для Footer*/
@@ -180,22 +172,26 @@ footer div{
     border: none;
     box-shadow: 0px 0px 4px grey;
     border-radius: 3%;
-    width: 15%;
+    width: 100%;
     background-color: #ffffff;
-    position: relative;
     height: auto;
+    display: block;
+    margin: 20px 0px;
+}
+.content-row{
+    display: inline;
+    float:left;
+    width: 20%;
+    margin: 10px;
 }
 .content-block-bottom{
     background: rgba(49, 56, 68, 0.8);
-    position: absolute;
-    bottom: 0%;
-    width: 100%;
     border-radius: 0 0 5px 5px;
-    color: white;
+    color: black;
+    background: white;
 }
 .content-img{
     width:100% ;
-    height: 100%;
 }
 .content-block:hover{
     box-shadow: 0px 0px 8px grey;
@@ -293,6 +289,8 @@ footer div{
 
 
 body{
-    background: #e0e9f2 /*url("../Images/Background.jpg") no-repeat fixed center*/;
+    background: white;
     margin: 0%;
+    height: 1500px;;
 }
+
