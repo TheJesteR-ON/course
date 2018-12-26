@@ -19,11 +19,11 @@
     
         $data = $_POST;
         if(isset($data['do_publish'])){
-                echo '<br><p style = "color: green;">Обьявление было успешно опубликовано на <a href = "../index.php">Главную страницу</a></p>';
+                echo '<br><br><br><br><br><br><p style = "color: green;">Обьявление было успешно опубликовано на <a href = "../index.php">Главную страницу</a></p>';
             }
             else{
             echo '
-                  
+            <br><br><br><br><br>              
     <fieldset class = "createField" > 
     <h2 class = "createForm-name">Опубликовать объявление</h2>
     <form class = "createForm" action="createAdP.php" method = "POST" enctype="multipart/form-data">
@@ -36,9 +36,14 @@
             <tr>
                 <td class = "section"><label >Категория <span class= "signRequired">*</span></label></td>
                 <td><select class = "input" required name="tag">
-                    <option value="dress">Одежда</option>
-                    <option value="service">Сервис</option>
-                    <option value="shoes">Обувь</option>
+                    <option value="Мода и стиль">Мода и стиль</option>
+                    <option value="Сервис">Сервис</option>
+                    <option value="Электроника">Электроника</option>
+                    <option value="Животные">Животные</option>
+                    <option value="Недвижимость">Недвижимость</option>
+                    <option value="Транспорт">Транспорт</option>
+                    <option value="Работа">Работа</option>
+                    <option value="Хобби, отдых и спорт">Хобби, отдых и спорт</option>
                 </select><br></td>
             </tr>
 
@@ -63,6 +68,18 @@
             <tr>
                 <td class = "section"><label >Описание <span class= "signRequired">*</span></label></td>
                 <td><textarea class = "input" style = "resize: none; " required rows="8" cols="55" name="descr" ></textarea><br></td>
+            </tr>
+            <tr>
+                <td class = "section"><label >Город <span class= "signRequired">*</span></label></td>
+                <td><select class = "input" required name="city">
+                    <option value="Харьков">Харьков</option>
+                    <option value="Киев">Киев</option>
+                    <option value="Днипро">Днипро</option>
+                    <option value="Львов">Львов</option>
+                    <option value="Одесса">Одесса</option>
+                    <option value="Винница">Винница</option>
+                    <option value="Чернигов">Чернигов</option>
+                </select><br></td>
             </tr>
             <tr>
                 <td class = "section"><label >Фото <span class= "signRequired">*</span></label></td>

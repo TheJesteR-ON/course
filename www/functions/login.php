@@ -29,6 +29,7 @@
             else{
                 //Вывод ошибки
                 echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+                
             }
         }
 

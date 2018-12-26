@@ -2,7 +2,7 @@
     $data = $_POST;
     if(isset($data['do_publish'])){
 
-        saveAd($_SESSION['logged_user']['u_id'], $data['title'], $data['tag'], $data['condition'],$_SESSION['logged_user']['u_adres'], $data['descr'], $data['price']);
+        saveAd($_SESSION['logged_user']['u_id'], $data['title'], $data['tag'], $data['condition'], $data['city'], $data['descr'], $data['price']);
         makeDir($data);
     }
 

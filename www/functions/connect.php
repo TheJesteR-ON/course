@@ -55,7 +55,10 @@
 
         $sql = "SELECT * FROM `ad` WHERE ".$where." ORDER BY `a_id` DESC LIMIT $limit";
         $result = $mysqli->query($sql);
-        return resultToArray($result);
+        if($result == TRUE)
+            return resultToArray($result);
+        else
+            return FALSE;
     }
 
     function resultToArray($result){
@@ -65,11 +68,37 @@
         return $array;
     }
 
+    function getDialog($where){
+        global $mysqli;
+
+        $sql = "SELECT * FROM `dialog` WHERE ".$where."";
+        $result = $mysqli->query($sql);
+        return resultToArray($result);
+    }
+
+    function getMessages($where){
+        global $mysqli;
+
+        $sql = "SELECT * FROM `message` WHERE ".$where."";
+        $result = $mysqli->query($sql);
+        return resultToArray($result);
+    }
+
     function getSql($sql){
         global $mysqli;
 
         $result = $mysqli->query($sql);
         return resultToArray($result);
+    }
+
+    function doQuery($sql){
+        global $mysqli;
+
+        $result = $mysqli->query($sql);
+        if($result)
+            return $result->fetch_assoc();
+        else
+            return false;
     }
 
 /*END*/
