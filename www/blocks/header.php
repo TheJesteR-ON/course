@@ -31,7 +31,7 @@
                     if(isset($_SESSION['logged_user'])){
                         echo '
                         <div class = "dropdown" style ="padding: 10px;" style= "margin-right: 0px;">
-                            <a>Мой кабинет</a>
+                            <a>Мой кабинет ('.$_SESSION['logged_user']['u_fio'].')</a>
                             <div class="dropdown-menu">
                                 <div> <a id="my_cab" href="../pages/My_page.php">Мои объявления</a></div>
                                 <div><a href="../index.php">Главная</a></div>

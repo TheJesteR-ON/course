@@ -1,9 +1,7 @@
 <?php
     require "../functions/connect.php";
     connectDB();
-
-    
-
+    require "../functions/details.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +20,7 @@
         $date = doQuery("SELECT DATE_FORMAT((SELECT a_time FROM `ad` WHERE `a_id` = ".$ad['a_id']."), '%d.%m.%Y  %h:%m:%s')");
         $date = $date["DATE_FORMAT((SELECT a_time FROM `ad` WHERE `a_id` = ".$ad['a_id']."), '%d.%m.%Y  %h:%m:%s')"];
         $user = findUser("u_id = ".$ad['u_id']."");
+
         echo'
         <div class = "left">
             <div class = "detail-photo apper-block">
@@ -65,8 +64,7 @@
             ';
             
             if(isset($_SESSION['logged_user'])){
-                $dialog = getDialog("`recive` = ".$ad['u_id']." AND `send` = ".$_SESSION['logged_user']['u_id']." OR `recive` = ".$_SESSION['logged_user']['u_id']." AND `send` = ".$ad['u_id']."");
-                echo'<a href = "chat.php?dialogId='.$dialog[0]['id'].'">Написать автору объявления</button>';
+                echo'<a href = "detailsAdP.php?sendToUser='.$ad['u_id'].'">Написать автору объявления</a>';
             }else{
                 echo'<a href = "loginP.php">Написать автору объявления</button>';
             }

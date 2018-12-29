@@ -25,11 +25,12 @@
 <body>
     <?php
         require_once "../blocks/header.php";
-        
-        
-        $message = getMessages("`d_id` = ".$_GET['dialogId']."");
+    
+        $message = getMessages("`d_id` = ".$_GET['dialogId']." ORDER BY `id` ASC");
     ?>
 <br><br><br><br><br><br>
+<input style = "display: none" type="text" id="n_dialog" value = "<?php echo $_GET['dialogId'] /* Для взятия номера диалога при ajax */?>">
+
     <div>
         <div class = "main-chat">
             <div id="msg-box">
@@ -42,7 +43,8 @@
                     ?>
                 </ul>
             </div>
-            <form action="chat.php?<?php echo'dialogId='.$_GET['dialogId'].''?>" method="post">
+
+            <form id="t-box" action="chat.php?<?php echo'dialogId='.$_GET['dialogId'].''?>" method="post">
                 <input type="text" name="message" id="">
                 <input type="submit" name = "do_send" value="Отправить">
             </form>
