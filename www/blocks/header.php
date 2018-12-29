@@ -6,7 +6,7 @@
 
         <div style = "position: absolute; right: 0; width: 70%; margin: 0;">
             <div class = "header-search-block">
-                <button class = "b_advsearch" id = "b_advsearch">Расширенный поиск</button>
+                <button class = "b_advsearch" id = "b_advsearch" onclick = 'advancedSearch();'>Расширенный поиск</button>
                 <input class = "header-search" type="text" id="search_name">
                 <img class = "search-img" width="25px" src="../Images/search.png" alt="Поиск">
             </div>

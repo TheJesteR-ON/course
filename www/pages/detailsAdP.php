@@ -1,6 +1,9 @@
 <?php
     require "../functions/connect.php";
     connectDB();
+
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +19,8 @@
 <div class = "detail-main">
     <?php
         $ad = findAd("a_id = ".$_GET['id']."");
+        $date = doQuery("SELECT DATE_FORMAT((SELECT a_time FROM `ad` WHERE `a_id` = ".$ad['a_id']."), '%d.%m.%Y  %h:%m:%s')");
+        $date = $date["DATE_FORMAT((SELECT a_time FROM `ad` WHERE `a_id` = ".$ad['a_id']."), '%d.%m.%Y  %h:%m:%s')"];
         $user = findUser("u_id = ".$ad['u_id']."");
         echo'
         <div class = "left">
@@ -47,7 +52,7 @@
                 <p><h3 class = "detail-block-title">Имя пользователя: </h3><br> '.$user['u_fio'].'</p>
             </div>
             <div class = "apper-block">
-                <p><h3 class = "detail-block-title">Время публикации: </h3><br> '.$ad['a_time'].'</p>
+                <p><h3 class = "detail-block-title">Время публикации: </h3><br> '.$date.'</p>
             </div>
             <div class = "apper-block">
                 <p><h3 class = "detail-block-title">Город: </h3><br> '.$ad['a_city'].'</p>

@@ -7,7 +7,17 @@
     require "functions/index.php";
 
     $ad = getAd(1000, "a_delete = 'FALSE'");
-    $min_price = doQuery("SELECT a_price")   
+   
+    $price = doQuery("SELECT MAX(a_price), MIN(a_price) FROM `ad`");
+
+    $max_price = $price['MAX(a_price)'];
+    $min_price = $price['MIN(a_price)'];
+
+    $date = doQuery("SELECT DATE_FORMAT((SELECT MIN(a_time) FROM `ad`), '%Y-%m-%d')");
+    $min_date = $date['DATE_FORMAT((SELECT MIN(a_time) FROM `ad`), \'%Y-%m-%d\')'];
+
+    $date = doQuery("SELECT DATE_FORMAT((SELECT MAX(a_time) FROM `ad`), '%Y-%m-%d')");
+    $max_date = $date['DATE_FORMAT((SELECT MAX(a_time) FROM `ad`), \'%Y-%m-%d\')'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,12 +63,12 @@
                 <option value="Хобби, отдых и спорт">Хобби, отдых и спорт</option>
             </select>
             <h3>Цена</h3>
-            <span>От </span><input type ="text" name="fromprice" id="fromprice">
-            <span> ДО </span><input type="text" name="toprice" id="toprice"><br>
+            <span>От </span><input type ="number" name="fromprice" id="fromprice" value = "<?php echo($min_price) ?>">
+            <span> ДО </span><input type="number" name="toprice" id="toprice" value = "<?php echo($max_price) ?>"><br>
 
             <h3>Время публикации</h3>
-            <span>от </span><input type="time" name="fromtime" id="fromtime">
-            <span> до </span><input type="time" name="totime" id="fromtime">
+            <span>от </span><input type="date" name="fromtime" id="fromtime"  value = "<?php echo($min_date) ?>">
+            <span> до </span><input type="date" name="totime" id="totime" value = "<?php echo($max_date) ?>">
         </form>
         <br>
     </div>
@@ -81,9 +91,10 @@
                             </div>
                         </a>
                     </td>';
-                    if((($i + 1) % round(count($ad)/5) == 0)||(($i + 1) == count($ad))){
-                        echo '</tr> <tr class = "content-row">';
-                    }
+                    if(count($ad) > 1)
+                        if((($i + 1) % round(count($ad)/5) == 0)||(($i + 1) == count($ad))){
+                            echo '</tr> <tr class = "content-row">';
+                        }
                 }
             ?>
                     
@@ -96,17 +107,22 @@
 
 </body>
 <script>
-    boolean i = false;
-    $('#b_advsearch').click(function(){
-        if(i){
-            $('#search-block').show('slow');
-            i = true;
+    function advancedSearch(){
+        if(document.getElementById('search-block').style.display == "none"){
+            document.getElementById('search-block').style.display = "block";
+        }else{
+            document.getElementById('search-block').style.display = "none";
+
+            document.getElementById('search_city').options[0].selected = true;
+            document.getElementById('tag').options[0].selected = true;
+
+            document.getElementById('fromprice').value = '<? echo $min_price; ?>';
+            document.getElementById('toprice').value = '<? echo $max_price; ?>';
+            document.getElementById('fromtime').value = '<? echo $min_date; ?>';
+            document.getElementById('totime').value = '<? echo $max_date; ?>';
+
         }
-        else{
-            $('#search-block').hide('slow');
-            i = false;
-        }
-    });
+    }
 </script>
 </html>
 

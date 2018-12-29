@@ -6,10 +6,14 @@
     if(isset($_GET['name'])){
         require "connect.php";
         connectDB();
+
                     
         $ad = getAd(10000, "a_title like '%".$_GET['name']."%' 
         AND a_city like '%".$_GET['city']."%' 
         AND a_tag like '%".$_GET['tag']."%' 
+        AND a_price >= ".$_GET['fprice']." 
+        AND a_price <= ".$_GET['tprice']."
+        AND (DATE(a_time) between '".$_GET['fdate']."' AND '".$_GET['tdate']."')
         AND a_delete = 'FALSE'");
 
         if($ad){

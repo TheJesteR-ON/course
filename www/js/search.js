@@ -8,7 +8,7 @@
             var search_tprice=$('#toprice').val();
             var search_ftime=$('#fromtime').val();
             var search_ttime=$('#totime').val(); //Взятие значения тз текстового поля 
-            $.ajax({url:"/functions/index.php?name="+search_name+"&city="+search_city+"&tag="+search_tag +"&fprice="+search_fprice+"&tprice="+search_tprice, cache:false, success:function(result){
+            $.ajax({url:"/functions/index.php?name="+search_name+"&city="+search_city+"&tag="+search_tag +"&fprice="+search_fprice+"&tprice="+search_tprice +"&fdate="+search_ftime+"&tdate="+search_ttime, cache:false, success:function(result){
             $('.showResult').html(result); //Присвоение HTML-кода в HTML-код элемента
             }});
         });
