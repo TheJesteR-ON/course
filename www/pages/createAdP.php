@@ -19,11 +19,10 @@
     
         $data = $_POST;
         if(isset($data['do_publish'])){
-                echo '<br><br><br><br><br><br><p style = "color: green;">Обьявление было успешно опубликовано на <a href = "../index.php">Главную страницу</a></p>';
+                echo '<p style = "color: green;">Обьявление было успешно опубликовано на <a href = "../index.php">Главную страницу</a></p>';
             }
             else{
-            echo '
-            <br><br><br><br><br>              
+            echo '          
     <fieldset class = "createField" > 
     <h2 class = "createForm-name">Опубликовать объявление</h2>
     <form class = "createForm" action="createAdP.php" method = "POST" enctype="multipart/form-data">

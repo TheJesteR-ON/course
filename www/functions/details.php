@@ -14,6 +14,6 @@
         }else{
             $dialog_id = $dialog_already[0]['id'];
         }
-        echo '<script type="text/javascript">window.location.href = "../pages/chat.php?dialogId='.$dialog_id.'"</script>';
+        echo '<script type="text/javascript">window.location.href = "../pages/list-dialogs.php"</script>';
     }
 ?>

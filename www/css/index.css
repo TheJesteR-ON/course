@@ -367,6 +367,56 @@ footer div{
 
 /*Конец*/
 
+/*chat*/
+
+#msg-box{
+    overflow:auto; 
+    width:95%; 
+    height: 700px;
+    padding:10px; 
+    background:#FFF;
+    margin:0px;
+}
+#msg-box ul{
+    list-style:none; 
+    padding: 0px; 
+    margin: 0px 0px;
+}
+#t-box{
+    margin: auto;
+    width: 70%;
+}
+#t-box .input-submit{
+    width: 15%;
+    color: white;
+    background-color: #2fbdb4;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+}
+#t-box .input-text{
+    width: 80%;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+}
+.message{
+    margin: 12px 10px;
+}
+.message_mine{
+    text-align: right;
+}
+.message-text{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+}
+.message-time{
+    font-size: 10px;
+}
+
+/*Конец*/
 body{
     background: #EFF3F5;
     margin: 0%;
