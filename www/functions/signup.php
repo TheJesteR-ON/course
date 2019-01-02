@@ -33,12 +33,12 @@
             if(empty($errors)){
                 //Если нет ошибок
                 saveUser($data['login'], $data['email'], password_hash($data['password'], PASSWORD_DEFAULT));
-                echo '<br><p style = "color: green;">Вам на почту было выслано письмо для подтверждения аккаунта</p>';
+                showMessage("INFO", "Вам на почту было выслано письмо для подтверждения аккаунта");
                 
             }
             else{
                 //Вывод ошибки
-                echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+                showMessage("ERROR", array_shift($errors));
             }
         }
         
@@ -50,7 +50,7 @@
                 activateUser($login);
                 echo '<script type="text/javascript">window.location.href = "../pages/loginP.php?active=activation"</script>';
             }else{
-                echo '<div style = "color: red;">Активация провалена</div>';
+                showMessage("ERROR", "Активация провалена");
             }
         }
 

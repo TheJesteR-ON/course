@@ -5,13 +5,20 @@
         </div>
 
         <div style = "position: absolute; right: 0; width: 70%; margin: 0;">
-            <div class = "header-search-block">
-                <button class = "b_advsearch" id = "b_advsearch" onclick = 'advancedSearch();'>Расширенный поиск</button>
-                <input class = "header-search" type="text" id="search_name">
-                <img class = "search-img" width="25px" src="../Images/search.png" alt="Поиск">
-            </div>
+        <?php
+            if($_SERVER['REQUEST_URI'] != "/index.php")
+                $visibility = 'style="visibility: hidden;"';
+            else{
+                $visibility = '';
+            }
 
-            <?php
+                echo'
+                <div '.$visibility.' class = "header-search-block">
+                    <button class = "b_advsearch" id = "b_advsearch" onclick = \'advancedSearch();\'>Расширенный поиск</button>
+                    <input class = "header-search" type="text" id="search_name">
+                    <img class = "search-img" width="25px" src="../Images/search.png" alt="Поиск">
+                </div>';
+
                 if(isset($_SESSION['logged_user'])){
                     echo '
                     <div class = "header-button">
@@ -54,3 +61,5 @@
         </div>
     </div>
 </header>
+
+<br><br><br><br><br>

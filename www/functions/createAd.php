@@ -30,7 +30,7 @@
         if ($mysqli->query($sql) === TRUE) {
             $er = 0;
         } else {
-            echo "<div style = \"color: red;\">Error: " . $sql . "<br>" . $mysqli->error."</div>";
+            showMessage("ERROR",$sql."<br>".$mysqli->error);
         }
     }
 

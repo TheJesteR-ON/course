@@ -21,7 +21,7 @@
     
         $data = $_POST;
         if(isset($data['do_edit'])){
-            echo '<br><p style = "color: green;">Обьявление было успешно отредактировано. Перейдите на <a href = "../index.php">Главную страницу</a></p>';
+            echo '<div class = "content-block" style = "color: green;">Обьявление было успешно отредактировано на <a href = "../index.php">Главную страницу</a></div>';
         }
         else if(isset($_GET['updateId'])){
             $ad = findAd("a_id = ".$_GET['updateId']."");

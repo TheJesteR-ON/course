@@ -28,13 +28,12 @@
             }
             else{
                 //Вывод ошибки
-                echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
-                
+                showMessage("ERROR", array_shift($errors));
             }
         }
 
         if(isset($_GET['active'])){
-            echo '<p style = "color: green;">Активация прошла успешно</p>';
+            showMessage("INFO", "Активация прошла успешно");
         }
 
     ?>

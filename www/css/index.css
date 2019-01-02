@@ -48,6 +48,13 @@ header div a{
     background: #2fbdb4;
     border-radius: 3px;
 }
+.header-button:hover{
+    background: #ffffff;
+}
+.header-button:hover a{
+    color: #2fbdb4;
+}
+
 
 .dropdown-menu{
     text-decoration: none;
@@ -89,6 +96,16 @@ footer div{
     font-size: 120%;
     color: white;
 }
+#message-block{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    font-size: 16px;
+    color: white;
+    background: #2fbdb4;
+    padding: 15px;
+    display: none;
+}
 /*Конец*/
 
 
@@ -102,28 +119,35 @@ footer div{
     border-radius: 5px;
     box-shadow: 0px 0px 15px grey;
     text-align: center;
-}.reg-input{
-    font-size: 13px;
+}
+.reg-input{
+    font-size: 15px;
     border: 1px solid grey;
-    border-radius: 2px;
+    border-radius: 5px;
     display: block;
     margin: 4px auto ;
-    padding: 5px;
+    padding: 15px;
     width: 80%;
     height: 25px;
 }
 #registration input:focus{
-    box-shadow: 0px 0px 7px #495466 
+    box-shadow: 0px 0px 7px #2fbdb4 
 }
 .reg-button{
     width: 85%;
-    background-color: rgb(219, 151, 3);
-    color: white;
+    border: 1px solid #2fbdb4;
+    background-color: white;
+    color: #2fbdb4;
     border-radius: 3px;
     font-weight: bold;
     font-size: 14px;
     padding: 8px;
 }
+.reg-button:hover{
+    background-color: #2fbdb4;
+    color: white;
+}
+
 #reg-name{
     font-size: 200%;
     margin: 10px 0px;
@@ -132,7 +156,7 @@ footer div{
     color: white;
 }
 .reg-left{
-    background: #7087a4;/*url(../Images/Background.jpg) no-repeat*/; 
+    background: #3b5998;/*url(../Images/Background.jpg) no-repeat*/; 
 }
 .reg-table{
     width: 100%;
@@ -150,7 +174,7 @@ footer div{
     color: white;
 }
 .log-block{
-    background: #7087a4; 
+    background: #3b5998; 
     margin: 0 auto 15%; 
     width: 35%; 
     padding: 10px;

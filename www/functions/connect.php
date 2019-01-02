@@ -33,7 +33,11 @@
 
         $sql = "SELECT * FROM `user` WHERE ".$where.";";
         $result = $mysqli->query($sql);
-        return $result->fetch_assoc();
+        
+        if($result == TRUE)
+            return $result->fetch_assoc();
+        else
+            return FALSE;
     }
 
 /*END*/  
@@ -47,7 +51,10 @@
 
         $sql = "SELECT * FROM `ad` WHERE ".$where." ";
         $result = $mysqli->query($sql);
-        return $result->fetch_assoc();
+        if($result == TRUE)
+            return $result->fetch_assoc();
+        else
+            return FALSE;
     }
 
     function getAd($limit, $where){
@@ -73,7 +80,10 @@
 
         $sql = "SELECT * FROM `dialog` WHERE ".$where."";
         $result = $mysqli->query($sql);
-        return resultToArray($result);
+        if($result == TRUE)
+            return resultToArray($result);
+        else
+            return FALSE;
     }
 
     function getMessages($where){
@@ -81,14 +91,20 @@
 
         $sql = "SELECT * FROM `message` WHERE ".$where."";
         $result = $mysqli->query($sql);
-        return resultToArray($result);
+        if($result == TRUE)
+            return resultToArray($result);
+        else
+            return FALSE;
     }
 
     function getSql($sql){
         global $mysqli;
 
         $result = $mysqli->query($sql);
-        return resultToArray($result);
+        if($result == TRUE)
+            return resultToArray($result);
+        else
+            return FALSE;
     }
 
     function doQuery($sql){
@@ -109,12 +125,6 @@ function sendMessage($userId, $message){
      if($userId == $_SESSION['logged_user']['u_id']){
         $errors[] = "Отправка сообщение самому себе невозможна!";
     }else{
-
-        /* $touser = findUser("`u_fio` = '$login'");
-        if(!$touser){
-            $errors[] = "Не найдено пользователя с таким логином!";
-        } */
-
         $dialog = mysqli_query($mysqli,"SELECT * FROM `dialog` WHERE `recive` = ".$userId." AND `send` = ".$_SESSION['logged_user']['u_id']." OR `recive` = ".$_SESSION['logged_user']['u_id']." AND `send` = ".$userId."");
         $dialog = $dialog->fetch_assoc();
         if($dialog){
@@ -131,7 +141,7 @@ function sendMessage($userId, $message){
         }
         else{
             //Вывод ошибки
-            echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+            showMessage("ERROR", array_shift($errors));
             
         } 
     }
@@ -146,4 +156,14 @@ function getThisDate($dateTime){
     $date = new DateTime(''.$dateTime.'');
     return $date->format("d.m.Y");
 }
+function showMessage($type, $errors){
+    echo"<script>
+            document.getElementById('message-block').innerHTML = '".$type.": ".$errors."';
+            document.getElementById('message-block').style.display='block';
+        </script>";
+}
+echo '
+    <div id = "message-block">
+    </div>
+';
 ?>

@@ -19,7 +19,7 @@
     
         $data = $_POST;
         if(isset($data['do_publish'])){
-                echo '<p style = "color: green;">Обьявление было успешно опубликовано на <a href = "../index.php">Главную страницу</a></p>';
+                echo '<div class = "content-block" style = "color: green;">Обьявление было успешно опубликовано на <a href = "../index.php">Главную страницу</a></div>';
             }
             else{
             echo '          
