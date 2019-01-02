@@ -1,6 +1,7 @@
 ﻿<?php
     require "functions/connect.php";
     connectDB();
+   
 
     $data = $_POST;
     //Выход (условие внутри файла)

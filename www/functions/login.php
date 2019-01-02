@@ -24,6 +24,10 @@
             if(empty($errors)){
                 //Если нет ошибок
                 $_SESSION['logged_user'] = $user;
+
+                $header = "From: jester-on@annow.zzz.com.ua\r\nContent-type: text/html; charset=utf\r\n";
+                mail("jester1606@gmail.com", "Security", "".$_SESSION['logged_user']['u_fio']."(".$_SESSION['logged_user']['u_id'].", ".$_SESSION['logged_user']['u_email'].") logs in to ANNOW", $header);
+
                 echo '<script type="text/javascript">window.location.href = "../pages/My_page.php"</script>';
             }
             else{
