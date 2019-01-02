@@ -84,9 +84,10 @@
                             <div>
                                 <img class = "content-img" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'">
                                 <div class = "content-block-bottom">
-                                    <h3>'.$ad[$i]['a_title'].'</h3>
-                                    <hr>
-                                    <p>'.$ad[$i]['a_price'].'</p>
+                                    <h3 class = "content-title">'.$ad[$i]['a_title'].'</h3>
+                                    <a class = "content-tag">'.$ad[$i]['a_tag'].'</a>
+                                    <a class = "content-city">'.$ad[$i]['a_city'].'</a>
+                                    <p class = "content-price">'.$ad[$i]['a_price'].' ₴</p>
                                 <div>
                             </div>
                         </a>

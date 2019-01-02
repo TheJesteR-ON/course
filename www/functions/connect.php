@@ -136,4 +136,14 @@ function sendMessage($userId, $message){
         } 
     }
 }
+
+function getThisTime($dateTime){
+    $date = new DateTime(''.$dateTime.'');
+    return $date->format("H:i");
+}
+
+function getThisDate($dateTime){
+    $date = new DateTime(''.$dateTime.'');
+    return $date->format("d.m.Y");
+}
 ?>

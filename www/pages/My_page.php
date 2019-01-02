@@ -13,27 +13,40 @@
 </head>
 <body>
    <?php require_once "../blocks/header.php";?>
-
+   <table class = "my-content-table">
    <?php
     $ad = getAd(100, "u_id = ".$_SESSION['logged_user']['u_id']."");
     
+    
     for($i = 0; $i < count($ad); $i++){
+            $date = getThisDate($ad[$i]['a_time']);
+            $time = getThisTime($ad[$i]['a_time']);
             echo '
-            <div style = "border: 1px solid grey;">
+            <tr class = "content-block my-content-block">
+            <td class = "my-content-img">
                 <a href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
-                    <img width = "200px" src="../Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'"><br>
-                    <h2>'.$ad[$i]['a_title'].'</h3>
+                    <img src="../Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'"><br>
                 </a>
-                <a href = "../pages/editAd.php?updateId='.$ad[$i]['a_id'].'">Редактировать </a>
+            </td>
+            <td class = "my-content-info">
+                <h2 class = "content-title">'.$ad[$i]['a_title'].'</h3>
+                <a class = "content-city">'.$ad[$i]['a_city'].'</a>
+                <a class = "content-tag">'.$ad[$i]['a_tag'].'</a><br>
+                <a class = "content-tag">'.$date.' '.$time.'</a>
+                <p class = "content-price">'.$ad[$i]['a_price'].' ₴</p>
+            </td>
+            <td class = "my-content-buttons">
                 <form action="My_page.php" method="post">
                     <input type = "text" name = "deleteId" value = "'.$ad[$i]['a_id'].'" style ="display: none;">
-                    <input type = "submit" name = "do_delete" value = "Удалить">
+                    <input class = "my-button " type = "submit" name = "do_edit" value = "Редактировать"><br>
+                    <input class = "my-button " type = "submit" name = "do_delete" value = "Деактивировать"><br>
+                    <input class = "my-button" type = "submit" name = "do_really_delete" value = "Удалить">
                 </form><br>
-                <p>'.$ad[$i]['a_price'].'</p>
-            </div><br>';
+            </td>
+            </tr><br>';
     }
    ?> 
-
+    </table>    
     <?php require_once "../blocks/footer.php"?>
 </body>
 </html>

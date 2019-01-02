@@ -40,14 +40,15 @@
                             $not_read = '';
                         }
 
-                        $date = new DateTime(''.$message[0]['date'].'');
+                        $date = getThisDate($message[0]['date']);
+                        $time = getThisTime($message[0]['date']);
                         
                         echo'
                         <a id = "dialog-src" onclick = \'changeDialog('.$dialog[$i]['id'].')\'>
                         <li '.$not_read.' class = "dialog" onclick = \'changeDialog('.$dialog[$i]['id'].')\'>
                             <span class = "dialog-user ">'.$user_with['u_fio'].'</span>
                             <span class = "dialog-message">'.$user_from['u_fio'].' : '.$message[0]['text'].'</span>
-                            <span class = "dialog-time">'.$date->format("H:i d.m.Y").'</span>
+                            <span class = "dialog-time">'.$time.' '.$date.'</span>
                         </li>
                         </a>
                         ';

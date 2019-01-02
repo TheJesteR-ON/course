@@ -43,16 +43,17 @@
                             else
                                 $message_class = "message_yours";
 
-                            $date = new DateTime(''.$message[$i]['date'].'');
+                            $date = getThisDate($message[$i]['date']);
                             if($i == 0){
-                                echo'<li style = "text-align: center;">'.$date->format("d.m.Y").'</li>';
+                                echo'<li style = "text-align: center;">'.$date.'</li>';
                             }
-                            echo'<li class = "'.$message_class.' message"><span class = "message-text">'.$message[$i]['text'].'  <span class = "message-time">'.$date->format("H:i").'</span></span></li>';
+                            
+                            echo'<li class = "'.$message_class.' message"><span class = "message-text">'.$message[$i]['text'].'  <span class = "message-time">'.getThisTime($message[$i]['date']).'</span></span></li>';
 
+                            $date_next = getThisDate($message[$i+1]['date']);
                             if($i < count($message) - 1){
-                                $date_next = new DateTime(''.$message[$i+1]['date'].'');
-                                if($date->format("d.m.Y") != $date_next->format("d.m.Y")){
-                                    echo'<li class ="message" style = "text-align: center;">'.$date_next->format("d.m.Y").'</li>';
+                                if($date != $date_next){
+                                    echo'<li class ="message" style = "text-align: center;">'.$date_next.'</li>';
                                 }
                             }
                         }

@@ -220,7 +220,7 @@ footer div{
 .content-block{
     border: none;
     box-shadow: 1px 1px 2px #B7BABB;
-    border-radius: 3%;
+    border-radius: 5px;
     width: 100%;
     background-color: #ffffff;
     height: auto;
@@ -238,12 +238,26 @@ footer div{
     border-radius: 0 0 5px 5px;
     color: black;
     background: white;
+    text-align: left;
+    padding: 8px;
 }
 .content-img{
     width:100% ;
 }
+.content-title{
+    font-size: 16px;
+}
+.content-tag, .content-city{
+    font-size: 14px;
+    color:#757575;
+}
+.content-price{
+    text-align: right;
+    font-size: 20px;
+    color: #3b5998;
+}
 .content-block:hover{
-    box-shadow: 0px 0px 8px grey;
+    box-shadow: 0px 0px 8px #2fbdb4;
 }
 .content-table{
     border-spacing: 11px 21px;
@@ -416,6 +430,49 @@ footer div{
     font-size: 10px;
 }
 
+/*Конец*/
+
+/*My_page.php*/
+.my-content-block{
+    height: 200px;
+    overflow: hidden;
+}
+.my-content-table{
+    width: 70%;
+    margin: auto;
+}
+.my-content-img a img{
+    max-width: 200px;
+    max-height: 200px;
+}
+.my-content-img{
+    min-width: 200px;
+    text-align: center;
+}
+.my-content-buttons {
+    width: 40%;
+    text-align: center;
+}
+.my-content-info{
+    width: 40%;
+    padding: 10px;
+}
+.my-button{
+    color: #2fbdb4;
+    padding: 5px;
+    border: 1px solid #2fbdb4;
+    margin: 8px auto;
+    width: 150px;
+    font-size: 14px;
+    background: none;
+    border-radius: 5px; 
+
+}
+.my-button:hover{
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    background: #2fbdb4; 
+}
 /*Конец*/
 body{
     background: #EFF3F5;

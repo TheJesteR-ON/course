@@ -16,8 +16,8 @@
 
 <div class = "detail-main">
     <?php
+        addView();
         $ad = findAd("a_id = ".$_GET['id']."");
-        $date = new DateTime(''.$ad['a_time'].'');
         $user = findUser("u_id = ".$ad['u_id']."");
 
         echo'
@@ -35,7 +35,8 @@
             
             <div class = "detail-descr apper-block">
                 <h2 class = "detail-title">'.$ad['a_title'].'</h2>
-                <p><h3 class = "detail-block-title">Описание: </h3><br> '.$ad['a_descr'].'</p>
+                <h3 class = "detail-block-title">Описание: </h3>
+                <p> '.$ad['a_descr'].'</p>
             </div>
             
             //Другие фото
@@ -44,13 +45,13 @@
         </div>
         <div class = "right">
             <div class = "apper-block">
-                <p><h3 class = "detail-block-title">Цена: </h3><br> '.$ad['a_price'].'</p>
+                <p><h3 class = "detail-block-title">Цена: </h3><br> <span class = "content-price">'.$ad['a_price'].' ₴</span></p>
             </div>
             <div class = "apper-block">
                 <p><h3 class = "detail-block-title">Имя пользователя: </h3><br> '.$user['u_fio'].'</p>
             </div>
             <div class = "apper-block">
-                <p><h3 class = "detail-block-title">Время публикации: </h3><br> '.$date->format("d.m.Y H:i").'</p>
+                <p><h3 class = "detail-block-title">Время публикации: </h3><br> '.getThisDate($ad['a_time']).' '.getThisTime($ad['a_time']).'</p>
             </div>
             <div class = "apper-block">
                 <p><h3 class = "detail-block-title">Город: </h3><br> '.$ad['a_city'].'</p>
@@ -59,13 +60,19 @@
                 <p><h3 class = "detail-block-title">Номер объявления: </h3> '.$ad['a_id'].'</p>
                 <p><h3 class = "detail-block-title">Категория: </h3> '.$ad['a_tag'].'</p>
                 <p><h3 class = "detail-block-title">Cостояние: </h3> '.$ad['a_condition'].'</p>
+                <p><h3 class = "detail-block-title">Количество просмотров: </h3> '.$ad['a_views'].'</p>
             </div>
             ';
             
             if(isset($_SESSION['logged_user'])){
-                echo'<a href = "detailsAdP.php?sendToUser='.$ad['u_id'].'">Написать автору объявления</a>';
+                echo'
+                <form action = "detailsAdP.php" style = "text-align: center;" method = "get">
+                    <input type = "text" style = "display: none;" name = "user_id" value = "'.$ad['u_id'].'" />
+                    <input type = "submit" name = "do_send" class = "my-button" style = "margin: auto; padding: 15px; width: 90%; font-size: 18px; text-align: center;" value = "Написать автору объявления"/>
+                </form>    
+                ';
             }else{
-                echo'<a href = "loginP.php">Написать автору объявления</button>';
+                echo'<a class = "my-button send-button" href = "loginP.php">Написать автору объявления</button>';
             }
         echo'
         </div>
@@ -73,35 +80,27 @@
             $ad1 = getad(10, "u_id = ".$ad['u_id']." and a_delete = 'FALSE' and a_id <> ".$ad['a_id']."");
             ?>
     
-
-    <div class="showResult content">
-        <table class ="content-table">
-            <tr>
+        <table class = "my-content-table">
             <?php
                 for($i = 0; $i < count($ad1); $i++){
                     echo '
-                    <td class = "content-block">
-                        <a class = "content-a" href = "../pages/detailsAdP.php?id='.$ad1[$i]['a_id'].'">
-                            <div>
-                                <img class = "content-img" src="../Images/'.$ad1[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad1[$i]['a_id'].'">
-                                <div class = "content-block-bottom">
-                                    <h3>'.$ad1[$i]['a_title'].'</h3>
-                                    <hr>
-                                    <p>'.$ad1[$i]['a_price'].'</p>
-                                <div>
-                            </div>
+                    <tr class = "content-block my-content-block">
+                    <td class = "my-content-img">
+                        <a href = "../pages/detailsAdP.php?id='.$ad1[$i]['a_id'].'">
+                            <img src="../Images/'.$ad1[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad1[$i]['a_id'].'"><br>
                         </a>
-                    </td>';
-                    if(($i + 1) % 4 == 0){
-                        echo '</tr> <tr>';
-                    }
+                    </td>
+                    <td class = "my-content-info" style = "width: 80%">
+                        <h2 class = "content-title">'.$ad1[$i]['a_title'].'</h3>
+                        <a class = "content-city">'.$ad1[$i]['a_city'].'</a>
+                        <a class = "content-tag">'.$ad1[$i]['a_tag'].'</a>
+                        <p class = "content-price">'.$ad1[$i]['a_price'].' ₴</p>
+                    </td>
+                    </tr><br>';
                 }
-            ?>
-                    
-            </tr>
+            ?>   
         </table>
-    </div>
-</div>
+            </div>
     <?php require_once "../blocks/footer.php"?>
 </body>
 <script>
