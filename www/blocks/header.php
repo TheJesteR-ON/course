@@ -20,16 +20,16 @@
                 </div>';
 
                 if(isset($_SESSION['logged_user'])){
-                    echo '
-                    <div class = "header-button">
-                        <a href = "../pages/createAdP.php" id="sub_ad">Подать обьявление</a>
-                    </div>
-                    ';
+                    $href = "../pages/createAdP.php";
                 }else{
-                    echo '<div class = "header-button">
-                            <a href = "../pages/loginP.php" id="sub_ad">Подать обьявление</a>
-                        </div>';
+                    $href = "../pages/loginP.php?do_create=no";
                 }
+
+                echo '
+                <div class = "header-button">
+                    <a href = "'.$href.'" id="sub_ad">Подать обьявление</a>
+                </div>
+                ';
             ?>
 
             <div style ="padding: 10px;"><a href="../index.php">Главная</a></div>

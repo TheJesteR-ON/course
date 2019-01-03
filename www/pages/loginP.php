@@ -15,7 +15,7 @@
     <?php
         require_once "../blocks/header.php";
     ?>
-
+<br><br><br>
     <div class="log-block">
         <div class="log-name">Авторизация</div><br>
         <form style = "margin: 0 auto; width: 90%;" class = "log-form" action="loginP.php" id="registration" method = "POST">

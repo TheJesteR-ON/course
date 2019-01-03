@@ -65,16 +65,17 @@
             ';
             
             if(isset($_SESSION['logged_user'])){
-                echo'
-                <form action = "detailsAdP.php" style = "text-align: center;" method = "get">
+                $action = "detailsAdP.php";
+            }else{
+                $action = "loginP.php";
+            }
+
+
+        echo'
+                <form action = "'.$action.'" style = "text-align: center;" method = "get">
                     <input type = "text" style = "display: none;" name = "user_id" value = "'.$ad['u_id'].'" />
                     <input type = "submit" name = "do_send" class = "my-button" style = "margin: auto; padding: 15px; width: 90%; font-size: 18px; text-align: center;" value = "Написать автору объявления"/>
-                </form>    
-                ';
-            }else{
-                echo'<a class = "my-button send-button" href = "loginP.php">Написать автору объявления</button>';
-            }
-        echo'
+                </form>
         </div>
             ';
             $ad1 = getad(10, "u_id = ".$ad['u_id']." and a_delete = 'FALSE' and a_id <> ".$ad['a_id']."");

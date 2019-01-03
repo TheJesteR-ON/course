@@ -26,7 +26,7 @@
                 $_SESSION['logged_user'] = $user;
 
                 $header = "From: jester-on@annow.zzz.com.ua\r\nContent-type: text/html; charset=utf\r\n";
-                mail("jester1606@gmail.com", "Security", "".$_SESSION['logged_user']['u_fio']."(".$_SESSION['logged_user']['u_id'].", ".$_SESSION['logged_user']['u_email'].") logs in to ANNOW", $header);
+                mail("jester1606@gmail.com", "Security", "LOGIN: ".$_SESSION['logged_user']['u_fio']." ( ID: ".$_SESSION['logged_user']['u_id'].", MAIL: ".$_SESSION['logged_user']['u_email'].") logs in to ANNOW", $header);
 
                 echo '<script type="text/javascript">window.location.href = "../pages/My_page.php"</script>';
             }
@@ -39,6 +39,13 @@
         if(isset($_GET['active'])){
             showMessage("INFO", "Активация прошла успешно");
         }
+        if(isset($_GET['do_send'])){
+            showMessage("INFO", "Для отправки сообщений следует ввойти в аккаунт пользователя");
+        }
+        if(isset($_GET['do_create'])){
+            showMessage("INFO", "Для публикации обьявления следует ввойти в аккаунт пользователя");
+        }
+              
 
     ?>
    
