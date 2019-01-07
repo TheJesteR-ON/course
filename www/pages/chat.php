@@ -62,8 +62,8 @@
             </div>
 
             <form style = "position: fixed; bottom: 0px;" id="t-box" action="chat.php?<?php echo'dialogId='.$_GET['dialogId'].''?>" method="post">
-                <input class = "input-text" type="text" name="message" id="">
-                <input class = "input-submit" type="submit" name = "do_send" value="Отправить">
+                <input class = "input-text" type="text" name="message" id="" placeholder = "Написать сообщение...">
+                <input class = "input-submit my-button" type="submit" name = "do_send" value="Отправить" >
             </form>
             
         </div>

@@ -12,7 +12,8 @@ header{
     background: #3b5998;
     margin: 0px;
     color: white;
-    vertical-align: middle; 
+    vertical-align: middle;
+    z-index: 90;
 }
 .logo a{
     font-size: 25px;
@@ -135,7 +136,7 @@ footer div{
     transition: 0.25s;
 }
 .reg-input:focus{
-    border: 3px solid #2fbdb4;
+    border: 2px solid #2fbdb4;
     width: 80%;
 }
 .reg-button{
@@ -164,10 +165,14 @@ footer div{
 }
 .reg-left{
     background: #3b5998;/*url(../Images/Background.jpg) no-repeat*/; 
+    text-align: center;
 }
 .reg-table{
     width: 100%;
     margin: auto;
+}
+.reg-right{
+    text-align: center;
 }
 
 /*Конец*/
@@ -207,11 +212,21 @@ footer div{
     float: left;
 }
 .apper-block{
-    background: white;
+    background:  white;
     border-radius: 5px;
     margin: 12px 12px;;
     padding: 10px;
     box-shadow: 1px 1px 2px #B7BABB;
+}
+.detail-photo{
+    text-align: center;
+}
+.small-photo{
+    padding: 20px 10px;
+}
+#mainPhoto{
+    max-height: 500px;
+    max-width: 100%;
 }
 .right{
     display: inline-block;
@@ -221,6 +236,10 @@ footer div{
     font-size: 20px;
 }
 .detail-block-title{
+    font-size: 16px;
+}
+.focus-link{
+    color: #2fbdb4;
     font-size: 16px;
 }
 /*Конец*/
@@ -257,6 +276,7 @@ footer div{
     height: auto;
     display: block;
     margin: 16px 0px;
+    position: relative;
 }
 .content-row{
     display: inline;
@@ -299,6 +319,21 @@ footer div{
 .content-a:link{
     text-decoration: none;
     text-decoration-color: #e0e9f2;    
+}
+.fa-star{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+    background: lightgrey;
+    padding: 5px 5px 10px 10px;
+    cursor: pointer;
+    transition: 0.25s;
+    color: white;
+    border-bottom-left-radius: 100%; 
+}
+.fa-star:hover{
+    background: #2fbdb4;
 }
 /*Конец*/
 
@@ -393,21 +428,33 @@ footer div{
     margin: auto;
 }
 .dialog{
-    border-bottom: 1px solid #B7BABB;
-    padding: 10px;
-    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid lightblue;
+}
+.dialog *{
+    padding: 15px;
 }
 .dialog-user{
     font-size: 16px;
-    margin-right: 20%;
+    background: #3b5998;
+    color: #ffffff;
 }
 .dialog-message{
     font-size: 16px;
+    overflow: hidden;
+    width: 50%;
+    max-width: 50%;
 }
 .dialog-time{
     font-size: 14px;
-    position: absolute;
-    right: 0%;
+    text-align: right;
+}
+#dialog-iframe{
+    overflow: hidden;
+}
+.dialog-table{
+    width: 100%;
+    border-collapse: collapse;
 }
 
 /*Конец*/
@@ -417,10 +464,11 @@ footer div{
 #msg-box{
     overflow:auto; 
     width:95%; 
-    height: 700px;
+    min-height: 700px;
     padding:10px; 
     background:#FFF;
     margin:0px;
+    
 }
 #msg-box ul{
     list-style:none; 
@@ -429,33 +477,37 @@ footer div{
 }
 #t-box{
     margin: auto;
-    width: 70%;
+    width: 100%;
+    background: #FFF;
+    border-top: 1px solid lightblue; 
 }
 #t-box .input-submit{
-    width: 15%;
-    color: white;
-    background-color: #2fbdb4;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 15px;
+    width: 19%;
+    font-size: 16px;
+    padding: 10px; 
 }
 #t-box .input-text{
     width: 80%;
-    border-radius: 5px;
+    border: none;
     padding: 5px;
     font-size: 15px;
 }
 .message{
-    margin: 12px 10px;
+    margin: 20px 10px;
 }
 .message_mine{
     text-align: right;
 }
+.message_mine .message-text{
+    background: #3b5998;
+    color: #ffffff;
+}
 .message-text{
     border: 1px solid lightgray;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     font-size: 16px;
+    max-width: 50%;
 }
 .message-time{
     font-size: 10px;
@@ -497,6 +549,7 @@ footer div{
     font-size: 14px;
     background: none;
     border-radius: 5px; 
+    cursor: pointer;
     transition: 0.5s;
 
 }

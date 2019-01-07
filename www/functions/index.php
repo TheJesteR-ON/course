@@ -23,6 +23,7 @@
                 for($i = 0; $i < count($ad); $i++){
                     echo '
                     <td class = "content-block">
+                        <i class="fas fa-star" onclick = "addFavorite('.$ad[$i]['a_id'].');"></i>
                         <a class = "content-a" href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
                             <div>
                                 <img class = "content-img" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'">
@@ -47,5 +48,18 @@
             echo'<img width = "500px;" src = "Images/no_ad.png">';
         }
                     
+    }
+    
+    if(isset($_POST['ad_favorite'])){
+        require "connect.php";
+        connectDB();
+
+        if(insertInto("`favorite_ad`", "`a_id`, `u_id`", "".$_POST['ad_favorite'].", ".$_SESSION['logged_user']['u_id'].""))
+            showMessage("INFO", "Обьявление добавлено в избранные");
+        else{
+            showMessage("ERROR", "Обьявление не было добавлено в избранные");
+        }
+        
+        closeDB();
     }
 ?>

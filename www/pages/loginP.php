@@ -24,7 +24,7 @@
             <input class = "reg-input" required type="password" name="password" id="password" placeholder="Введите пароль"><br>
             <input class = "reg-button log-button" type="submit" name = "do_login" value="Войти">
 
-            <p>Если у вас нет аккаунта, вам следует <a href="signupP.php">зарегистрироваться</a><p>
+            <p>Если у вас нет аккаунта, вам следует <a class = "focus-link" href="signupP.php">зарегистрироваться</a><p>
         </form>
     </div>
 

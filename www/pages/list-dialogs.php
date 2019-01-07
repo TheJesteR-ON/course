@@ -27,7 +27,7 @@
 
     <div style ="margin: auto; width: 90%; height: 700px; vertical-align: top;">
         <div class = "dialog-list" style = "display: inline-block; height: 700px; float: left; width: 40%;">
-            <ul>
+            <table class = "dialog-table">
                 <?php
                     for($i = 0; $i < count($dialog); $i++){
                         $user_with = findUser("(`u_id` = ".$dialog[$i]['recive']." OR `u_id` = ".$dialog[$i]['send'].") AND `u_id` <> ".$_SESSION['logged_user']['u_id']."");
@@ -35,28 +35,27 @@
                         $user_from = findUser("`u_id` = ".$message[0]['user']."");
 
                         if(($dialog[$i]['status'] == 0) && ($dialog[$i]['recive'] == $_SESSION['logged_user']['u_id'])){
-                            $not_read = 'style = "background-color: grey;"';
+                            $not_read = 'style = "background: #2fbdb4 ;color: white;"';
                         }else{
                             $not_read = '';
                         }
-
+        
+                        /* $date = new DateTime(''.$message[0]['date'].''); */
                         $date = getThisDate($message[0]['date']);
                         $time = getThisTime($message[0]['date']);
                         
                         echo'
-                        <a id = "dialog-src" onclick = \'changeDialog('.$dialog[$i]['id'].')\'>
-                        <li '.$not_read.' class = "dialog" onclick = \'changeDialog('.$dialog[$i]['id'].')\'>
-                            <span class = "dialog-user ">'.$user_with['u_fio'].'</span>
-                            <span class = "dialog-message">'.$user_from['u_fio'].' : '.$message[0]['text'].'</span>
-                            <span class = "dialog-time">'.$time.' '.$date.'</span>
-                        </li>
-                        </a>
+                        <tr '.$not_read.' class = "dialog" onclick = \'changeDialog('.$dialog[$i]['id'].')\'>
+                            <td class = "dialog-user ">'.$user_with['u_fio'].'</td>
+                            <td  class = "dialog-message">'.$user_from['u_fio'].': '.$message[0]['text'].'</td>
+                            <td class = "dialog-time">'.$time.' '.$date.'</td>
+                        </tr>
                         ';
                     }
                 ?>
-            </ul>
+            </table>
         </div>
-        <div style = "display: inline-block; width: 55%">
+        <div style = "display: inline-block; width: 55%;">
             <iframe id = "dialog-iframe" src="chat.php?dialogId=<?php echo $dialog[0]['id']?>" style = "width: 100%; height: 700px; border: 1px solid lightgrey; border-radious: 5px;"></iframe>
         </div>
 

@@ -40,30 +40,30 @@
         connectDB();
         
         $dialog = getDialog("`send` = ".$_SESSION['logged_user']['u_id']." OR `recive` = ".$_SESSION['logged_user']['u_id']."  ORDER BY `id` DESC");
-        echo'<ul>';
+        echo'<table class = "dialog-table">';
             for($i = 0; $i < count($dialog); $i++){
                 $user_with = findUser("(`u_id` = ".$dialog[$i]['recive']." OR `u_id` = ".$dialog[$i]['send'].") AND `u_id` <> ".$_SESSION['logged_user']['u_id']."");
                 $message = getMessages("`d_id` = ".$dialog[$i]['id']." ORDER BY `id` DESC LIMIT 1;"); // Нахождение последнего сообщения данного диалога для отображения его данных
                 $user_from = findUser("`u_id` = ".$message[0]['user']."");
 
                 if(($dialog[$i]['status'] == 0) && ($dialog[$i]['recive'] == $_SESSION['logged_user']['u_id'])){
-                    $not_read = 'style = "backgroung-color: grey;"';
+                    $not_read = 'style = "background: #2fbdb4 ;color: white;"';
                 }else{
                     $not_read = '';
                 }
 
-                $date = new DateTime(''.$message[0]['date'].'');
+                /* $date = new DateTime(''.$message[0]['date'].''); */
+                $date = getThisDate($message[0]['date']);
+                $time = getThisTime($message[0]['date']);
                 
                 echo'
-                <a id = "dialog-src" href = "#" onclick = \'changeDialog('.$dialog[$i]['id'].')\'>
-                <li '.$not_read.' class = "dialog" onclick = \'changeDialog('.$dialog[$i]['id'].')\'>
-                    <span class = "dialog-user ">'.$user_with['u_fio'].'</span>
-                    <span class = "dialog-message">'.$user_from['u_fio'].' : '.$message[0]['text'].'</span>
-                    <span class = "dialog-time">'.$date->format("H:i d.m.Y").'</span>
-                </li>
-                </a>
+                <tr '.$not_read.' class = "dialog" onclick = \'changeDialog('.$dialog[$i]['id'].')\'>
+                    <td class = "dialog-user ">'.$user_with['u_fio'].'</td>
+                    <td  class = "dialog-message">'.$user_from['u_fio'].': '.$message[0]['text'].'</td>
+                    <td class = "dialog-time">'.$time.' '.$date.'</td>
+                </tr>
                 ';
             }
-        echo'</ul>';
+        echo'</table>';
     } 
 ?>

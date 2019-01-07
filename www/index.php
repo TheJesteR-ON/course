@@ -28,9 +28,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ANNow: Главная</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/addFavorite.js"></script>
 </head>
 <body>
     <?php
@@ -81,6 +83,7 @@
                 for($i = 0; $i < count($ad); $i++){
                     echo '
                     <td class = "content-block">
+                        <i class="fas fa-star" onclick = "addFavorite('.$ad[$i]['a_id'].');"></i>
                         <a class = "content-a" href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
                             <div>
                                 <img class = "content-img" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'">

@@ -8,9 +8,9 @@
         $database = "thejester_on";
 
         $mysqli = new mysqli($servername, $username, $password, $database);
-        if($mysqli->connect_error){
+        if($mysqli->connect_error)
             die("Connection failed: " . $mysqli->connect_error);
-        }
+
         session_start();
     }
 
@@ -166,4 +166,9 @@ echo '
     <div id = "message-block">
     </div>
 ';
+
+function insertInto($table, $columns, $values){
+    global $mysqli;
+    return mysqli_query($mysqli, "INSERT INTO ".$table." (".$columns.") VALUES (".$values.")");
+}
 ?>

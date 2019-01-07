@@ -23,14 +23,15 @@
         echo'
         <div class = "left">
             <div class = "detail-photo apper-block">
-                <img id = "mainPhoto" width = "100%" src="../Images/'.$ad['a_id'].'/1.jpg" alt="Статья №'.$ad['a_id'].'"><br>
-            ';
+                <img id = "mainPhoto" src="../Images/'.$ad['a_id'].'/1.jpg" alt="Статья №'.$ad['a_id'].'"><br>
+                <div class = "detail-photo-list">
+                ';
             for($i = 1; $i < 6; $i++){
                 echo'
-                <img id = "'.$i.'" width = "50px" src="../Images/'.$ad['a_id'].'/'.$i.'.jpg" onclick = \'changePhoto(this.id)\'>
+                <img id = "photo'.$i.'" class = "small-photo" width = "50px" src="../Images/'.$ad['a_id'].'/'.$i.'.jpg" onclick = \'changePhoto(this.id)\'>
                 ';
             }
-            echo'
+            echo'</div>
             </div>
             
             <div class = "detail-descr apper-block">
@@ -108,6 +109,13 @@
     function changePhoto(id)
     {
         document.getElementById("mainPhoto").src = document.getElementById(id).src;
+
+        for(var i = 1; i < 6; i++){
+            if(document.getElementById("photo"+i).src == document.getElementById("mainPhoto").src)
+                document.getElementById("photo"+i).style.background = "#2fbdb4";
+            else
+                document.getElementById("photo"+i).style.background = "none";
+        }
     }
 </script>
 </html>
