@@ -39,29 +39,25 @@
                 <h3 class = "detail-block-title">Описание: </h3>
                 <p> '.$ad['a_descr'].'</p>
             </div>
-            
-            //Другие фото
-            
-            //Прочие Объявления этого же автора
         </div>
         <div class = "right">
             <div class = "apper-block">
                 <p><h3 class = "detail-block-title">Цена: </h3><br> <span class = "content-price">'.$ad['a_price'].' ₴</span></p>
             </div>
             <div class = "apper-block">
-                <p><h3 class = "detail-block-title">Имя пользователя: </h3><br> '.$user['u_fio'].'</p>
+                <p><h3 class = "detail-block-title">Имя пользователя: </h3><br><i class="fas fa-user"></i> '.$user['u_fio'].'</p>
             </div>
             <div class = "apper-block">
-                <p><h3 class = "detail-block-title">Время публикации: </h3><br> '.getThisDate($ad['a_time']).' '.getThisTime($ad['a_time']).'</p>
+                <p><h3 class = "detail-block-title">Время публикации: </h3><br><i class="far fa-clock"></i> '.getThisDate($ad['a_time']).' '.getThisTime($ad['a_time']).'</p>
             </div>
             <div class = "apper-block">
-                <p><h3 class = "detail-block-title">Город: </h3><br> '.$ad['a_city'].'</p>
+                <p><h3 class = "detail-block-title">Город: </h3><br><i class="fas fa-map-marker-alt"></i> '.$ad['a_city'].'</p>
             </div>
             <div class = "apper-block">
                 <p><h3 class = "detail-block-title">Номер объявления: </h3> '.$ad['a_id'].'</p>
-                <p><h3 class = "detail-block-title">Категория: </h3> '.$ad['a_tag'].'</p>
-                <p><h3 class = "detail-block-title">Cостояние: </h3> '.$ad['a_condition'].'</p>
-                <p><h3 class = "detail-block-title">Количество просмотров: </h3> '.$ad['a_views'].'</p>
+                <p><h3 class = "detail-block-title">Категория: </h3><i class="fas fa-tags"></i> '.$ad['a_tag'].'</p>
+                <p><h3 class = "detail-block-title">Cостояние: </h3><i class="fas fa-battery-half"></i> '.$ad['a_condition'].'</p>
+                <p><h3 class = "detail-block-title">Количество просмотров: </h3><i class="far fa-eye"></i> '.$ad['a_views'].'</p>
             </div>
             ';
             
@@ -83,6 +79,7 @@
             ?>
     
         <table class = "my-content-table">
+        <caption style = "font-size: 20px;" class = "table-caption">Прочие oбъявления этого же автора</caption>';
             <?php
                 for($i = 0; $i < count($ad1); $i++){
                     echo '
@@ -94,8 +91,9 @@
                     </td>
                     <td class = "my-content-info" style = "width: 80%">
                         <h2 class = "content-title">'.$ad1[$i]['a_title'].'</h3>
-                        <a class = "content-city">'.$ad1[$i]['a_city'].'</a>
-                        <a class = "content-tag">'.$ad1[$i]['a_tag'].'</a>
+                        <a class = "content-tag"><i class="fas fa-tags"></i> '.$ad1[$i]['a_tag'].'</a>
+                        <a class = "content-city"><i class="fas fa-map-marker-alt"></i> '.$ad1[$i]['a_city'].'</a>
+                        <p class = "content-city"><i class="fas fa-clock"></i> '.$ad1[$i]['a_time'].'</p>
                         <p class = "content-price">'.$ad1[$i]['a_price'].' ₴</p>
                     </td>
                     </tr><br>';

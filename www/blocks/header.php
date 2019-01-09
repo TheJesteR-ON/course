@@ -4,18 +4,20 @@
             <a href="../index.php">ANNow</a>
         </div>
 
-        <div style = "position: absolute; right: 0; width: 70%; margin: 0;">
+        <div style = "position: absolute; right: 10px; width: 75%; margin: 0;">
         <?php
-            if($_SERVER['REQUEST_URI'] != "/index.php")
-                $visibility = 'style="visibility: hidden;"';
-            else{
+            if($_SERVER['REQUEST_URI'] == "/index.php" || $_SERVER['REQUEST_URI'] == "/")
                 $visibility = '';
+            else{ 
+                $visibility = 'style="visibility: hidden;"';
             }
+
+            comeMessage();
 
                 echo'
                 <div '.$visibility.' class = "header-search-block">
                     <button class = "b_advsearch" id = "b_advsearch" onclick = \'advancedSearch();\'>Расширенный поиск</button>
-                    <input class = "header-search" type="text" id="search_name">
+                    <input class = "header-search" type="text" id="search_name" placeholder="Поиск">
                     <img class = "search-img" width="25px" src="../Images/search.png" alt="Поиск">
                 </div>';
 
@@ -27,7 +29,7 @@
 
                 echo '
                 <div class = "header-button">
-                    <a href = "'.$href.'" id="sub_ad">Подать обьявление</a>
+                    <a href = "'.$href.'" id="sub_ad"><i class="fas fa-plus-circle"></i> Подать обьявление</a>
                 </div>
                 ';
             ?>
@@ -42,7 +44,7 @@
                             <div class="dropdown-menu">
                                 <div> <a id="my_cab" href="../pages/My_page.php">Мои объявления</a></div>
                                 <div><a href="../index.php">Главная</a></div>
-                                <div><a href="../index.php">Избранное</a></div>
+                                <div><a href="../pages/favorite-ad.php">Избранное</a></div>
                                 <div><a href="../pages/list-dialogs.php">Сообщения</a></div>
                                 <div><a href="../index.php?do_logout=logout">Выход</a></div>
                             </div>
@@ -63,3 +65,16 @@
 </header>
 
 <br><br><br><br><br>
+
+<?php
+    switch ($_SERVER['REQUEST_URI']){
+        case "/pages/detailsAdP.php": { $page = "Подробнее об объявлении"; break;}
+        case "/pages/createAdP.php": { $page = "Создание объявления"; break;}
+        case "/pages/editAd.php": { $page = "Редактировать объявление"; break;}
+        case "/pages/favorite-ad.php": { $page = "Избранные объявления"; break;}
+        case "/pages/list-dialogs.php": { $page = "Сообщения"; break;}
+        case "/pages/My_page.php": { $page = "Мои объявления"; break;}
+    }
+    if($page)
+        echo '<br><br><div class = "site-navigation">Вы находитесь > <span class = "this-page">'.$page.'</span></div>'
+?>

@@ -157,10 +157,20 @@ function getThisDate($dateTime){
     return $date->format("d.m.Y");
 }
 function showMessage($type, $errors){
+    if($type == "ERROR")
+        $type = "<i class=\"fas fa-exclamation-triangle\"></i>";
+    else
+        $type = "<i class=\"fas fa-info-circle\"></i>";
     echo"<script>
-            document.getElementById('message-block').innerHTML = '".$type.": ".$errors."';
+            document.getElementById('message-block').innerHTML = '".$type." ".$errors."';
             document.getElementById('message-block').style.display='block';
         </script>";
+}
+function comeMessage(){
+    global $mysqli;
+    $message = selectFrom("*", "`dialog`", "`status` = 0 AND `recive` = ".$_SESSION['logged_user']['u_id']."");
+    if($message)
+    showMessage("INFO", "У вас есть ".count($message)." непрочитанные сообщение(ий)");
 }
 echo '
     <div id = "message-block">
@@ -170,5 +180,23 @@ echo '
 function insertInto($table, $columns, $values){
     global $mysqli;
     return mysqli_query($mysqli, "INSERT INTO ".$table." (".$columns.") VALUES (".$values.")");
+}
+function update($table, $set, $where){
+    global $mysqli;
+    return mysqli_query($mysqli, "UPDATE ".$table." SET ".$set." WHERE ".$where."");
+}
+function delete($table, $where){
+    global $mysqli;
+    return mysqli_query($mysqli, "DELETE FROM ".$table." WHERE ".$where."");
+}
+function selectFrom($columns, $tables, $where){
+    global $mysqli;
+
+    $sql = "SELECT ".$columns." FROM ".$tables." WHERE ".$where."";
+    $result = $mysqli->query($sql);
+    if($result == TRUE)
+        return resultToArray($result);
+    else
+        return FALSE;
 }
 ?>

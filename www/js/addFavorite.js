@@ -8,7 +8,10 @@ function addFavorite(ad_id){
         dataType: "html",
 
         success: function(data) {
-            $('.showResult').html(data); 
+            if(data.indexOf("add") != -1)
+                document.getElementById("i-"+ad_id).style.backgroundColor = "#2fbdb4";
+            else
+                document.getElementById("i-"+ad_id).style.backgroundColor = "lightgrey";
         },
 
         error: function(XMLHttpRequest, textStatus, errorThrown){

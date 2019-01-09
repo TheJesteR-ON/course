@@ -59,7 +59,7 @@
                                 <td style = "text-align: left;" class = "section"><label >Состояние <span class= "signRequired">*</span></label></td>
                                 <td><div class="radios-as-buttons">
                                         <div>
-                                            <input checked type="radio" name="condition" id="radio1" value = "Новое" checked />
+                                            <input checked type="radio" name="condition" id="radio1" value = "Новое" />
                                             <label for="radio1">Новое</label>
                                         </div>
                                         <div>
@@ -86,7 +86,7 @@
                             </tr>
                             <tr>
                                 <td class = "section"><label >Фото <span class= "signRequired">*</span></label></td>
-                                <td><input class = "input" required type="file" id="fileMulti" name="fileMulti[]" multiple accept="image/*" />
+                                <td><input class = "input" type="file" id="fileMulti" name="fileMulti[]" multiple accept="image/*" />
                                 <div class="row"><span id="outputMulti"></span></div></td>
                             </tr>
                         </table>
@@ -104,19 +104,23 @@
 
 </body>
 <script>
-    function(){
         var tag = document.getElementById('tag');
-        for(var i = 0; i < tag.options.count(); i++){
+        for(var i = 0; i < tag.childElementCount; i++){
             if(tag.options[i].value == "<?php echo $ad['a_tag']?>")
-                document.getElementById('tag').options[i].selected = true;
+                tag.options[i].selected = true;
         }
-
 
         var city = document.getElementById('city');
-        for(var i = 0; i < city.options.count(); i++){
+        for(var i = 0; i < city.childElementCount; i++){
             if(city.options[i].value == "<?php echo $ad['a_city']?>")
-                document.getElementById('city').options[i].selected = true;
+                city.options[i].selected = true;
         }
-    }
+
+        var cond = document.getElementsByName('condition');
+/*         console.log(cond); */
+        for(var i = 0; i < cond.length; i++){
+            if(cond[i].value == "<?php echo $ad['a_condition']?>")
+                cond[i].checked = true;
+        }
 </script>
 </html>

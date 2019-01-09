@@ -81,16 +81,21 @@
             <tr class = "content-row">
             <?php
                 for($i = 0; $i < count($ad); $i++){
+                    $f_ad = selectFrom("*", "`favorite_ad`", "`a_id` = ".$ad[$i]['a_id']." AND `u_id` = ".$_SESSION['logged_user']['u_id']."");
+                    $style = "";
+                    if($f_ad){
+                        $style = "style = \"background-color: #2fbdb4;\"";
+                    }
                     echo '
                     <td class = "content-block">
-                        <i class="fas fa-star" onclick = "addFavorite('.$ad[$i]['a_id'].');"></i>
+                        <i class="fas fa-star" '.$style.'  id = "i-'.$ad[$i]['a_id'].'" onclick = \'addFavorite('.$ad[$i]['a_id'].');\'></i>
                         <a class = "content-a" href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
                             <div>
                                 <img class = "content-img" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'">
                                 <div class = "content-block-bottom">
                                     <h3 class = "content-title">'.$ad[$i]['a_title'].'</h3>
-                                    <a class = "content-tag">'.$ad[$i]['a_tag'].'</a>
-                                    <a class = "content-city">'.$ad[$i]['a_city'].'</a>
+                                    <a class = "content-tag"><i class="fas fa-tags"></i> '.$ad[$i]['a_tag'].'</a><br>
+                                    <p class = "content-city"><i class="fas fa-map-marker-alt"></i> '.$ad[$i]['a_city'].'</p>
                                     <p class = "content-price">'.$ad[$i]['a_price'].' ₴</p>
                                 <div>
                             </div>

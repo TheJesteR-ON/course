@@ -21,9 +21,14 @@
             <table class ="content-table">
             <tr class = "content-row">';
                 for($i = 0; $i < count($ad); $i++){
+                    $f_ad = selectFrom("*", "`favorite_ad`", "`a_id` = ".$ad[$i]['a_id']." AND `u_id` = ".$_SESSION['logged_user']['u_id']."");
+                    $style = "";
+                    if($f_ad){
+                        $style = "style = \"background-color: #2fbdb4;\"";
+                    }
                     echo '
                     <td class = "content-block">
-                        <i class="fas fa-star" onclick = "addFavorite('.$ad[$i]['a_id'].');"></i>
+                        <i class="fas fa-star" '.$style.'  id = "i-'.$ad[$i]['a_id'].'" onclick = \'addFavorite('.$ad[$i]['a_id'].');\'></i>
                         <a class = "content-a" href = "../pages/detailsAdP.php?id='.$ad[$i]['a_id'].'">
                             <div>
                                 <img class = "content-img" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'">
@@ -45,7 +50,7 @@
             </tr>
         </table>';
         }else{
-            echo'<img width = "500px;" src = "Images/no_ad.png">';
+            require_once "../blocks/no_ad.php";
         }
                     
     }
@@ -54,10 +59,15 @@
         require "connect.php";
         connectDB();
 
-        if(insertInto("`favorite_ad`", "`a_id`, `u_id`", "".$_POST['ad_favorite'].", ".$_SESSION['logged_user']['u_id'].""))
-            showMessage("INFO", "Обьявление добавлено в избранные");
+        $ad = selectFrom("*", "`favorite_ad`", "`a_id` = ".$_POST['ad_favorite']." AND `u_id` = ".$_SESSION['logged_user']['u_id']."");
+
+        if(!$ad){
+            insertInto("`favorite_ad`", "`a_id`, `u_id`", "".$_POST['ad_favorite'].", ".$_SESSION['logged_user']['u_id']."");
+            echo 'add';
+        }
         else{
-            showMessage("ERROR", "Обьявление не было добавлено в избранные");
+            delete("`favorite_ad`",  "`a_id` = ".$_POST['ad_favorite']." AND `u_id` = ".$_SESSION['logged_user']['u_id']."");
+            echo 'delete';
         }
         
         closeDB();
