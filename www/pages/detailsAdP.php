@@ -26,7 +26,7 @@
                 <img id = "mainPhoto" src="../Images/'.$ad['a_id'].'/1.jpg" alt="Статья №'.$ad['a_id'].'"><br>
                 <div class = "detail-photo-list">
                 ';
-            for($i = 1; $i < 6; $i++){
+            for($i = 1; $i <= $ad['photo_num']; $i++){
                 echo'
                 <img id = "photo'.$i.'" class = "small-photo" width = "50px" src="../Images/'.$ad['a_id'].'/'.$i.'.jpg" onclick = \'changePhoto(this.id)\'>
                 ';

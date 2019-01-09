@@ -4,6 +4,7 @@
 
         saveAd($_SESSION['logged_user']['u_id'], $data['title'], $data['tag'], $data['condition'], $data['city'], $data['descr'], $data['price']);
         makeDir($data);
+        
     }
 
     function makeDir($data){
@@ -20,6 +21,7 @@
                 $temp = '';
                 $tmp = '';
             }
+        //update("`ad`", "`photo_num` = ".$count."", "`a_id` = ".$ad['a_id']."");
     }
     function saveAd($in_user, $in_title, $in_tag, $in_cond, $in_city, $in_descr, $in_price){
         global $mysqli;

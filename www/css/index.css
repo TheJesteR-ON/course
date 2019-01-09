@@ -367,12 +367,12 @@ footer div{
 /*Стили для страницы "createAd.php"*/
 .createForm{
     margin: 15px 20px 15px 30px;
-  }
+    text-align: center;
+}
   .createField{
     background: white;
     margin: 80px 15% 2%;
     width: 70%;
-    box-shadow: 0px 0px 10px grey;
     border: none;
     border-radius: 5px;
 }
@@ -383,11 +383,14 @@ footer div{
   }
 
   .createForm-name{
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
+    border-bottom: 2px solid #2fbdb4;
+    padding-bottom: 20px;
+    text-align: left;
   }
   .section{
-    font-size: 16px;
+    font: 20px;
     font-weight: bold;
     padding: 5px 40px 10px 10px;
     text-align: right;
@@ -398,29 +401,61 @@ footer div{
   }
   
 .input{
-    border-radius: 5px;
     box-shadow: none;
+    border: none;
+    width: 100%;
+    padding: 5px;
 }
-
+.input-desc{
+    border: lightgrey 1px solid;
+}
+.input-desc:focus{
+    border: #2fbdb4 1px solid;
+}
+.input-txt{
+    border-bottom: lightgrey 1px solid;
+}
+.input-select{
+    border-bottom: lightgrey 1px solid;
+}
+.input-txt:focus, .input-select:focus{
+    border-bottom: #2fbdb4 1px solid;
+}
+.input-radio{
+    padding: 10px;
+}
+.create-b{
+    font-size: 18px;
+}
+.input-table{
+    border-spacing: 30px 30px;
+    width: 80%;
+    margin-left: 5%;
+}
+.input-file{
+    padding: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background: #3b5998;
+}
 .radios-as-buttons div {
     float: left;
 }
 .radios-as-buttons input {
     position: absolute;
     left: -9999px;
-
 }
 .radios-as-buttons label {
     display: block;
     margin: 0 0 0 -1px;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: 1px solid #7087a4;
     background-color: white;
-    color: #313844;
+    color: #3b5998;
     cursor: pointer;
 }
 .radios-as-buttons input:checked + label {
-    background-color: #7087a4;
+    background-color: #3b5998;
     color: white;
 }
 .radios-as-buttons div:first-child label {

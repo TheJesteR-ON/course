@@ -27,18 +27,18 @@
             $ad = findAd("a_id = ".$_GET['updateId']."");
             echo '
             <br>                
-                <fieldset class = "createField" > 
-                    <h2 class = "createForm-name">Опубликовать объявление</h2>
-                    <form class = "createForm" action="editAd.php" method = "POST" enctype="multipart/form-data">
-                        <table>
-                            <tr>
+            <fieldset class = "createField apper-block" > 
+            <h2 class = "createForm-name">Опубликовать объявление</h2>
+            <form class = "createForm" action="createAdP.php" method = "POST" enctype="multipart/form-data">
+                <table class = "input-table">
+                    <tr>
                                 <td  class = "section"><label>Заголовок <span class= "signRequired">*</span></label></td>
-                                <td><input class = "input" autofocus required type="text" name="title" value = "'.$ad['a_title'].'"><br></td>
+                                <td><input class = "input input-txt" autofocus required type="text" name="title" value = "'.$ad['a_title'].'"><br></td>
                             </tr>
 
                             <tr>
                                 <td class = "section"><label >Категория <span class= "signRequired">*</span></label></td>
-                                <td><select id = "tag" class = "input" required name="tag" >
+                                <td><select id = "tag" class = "input input-select" required name="tag" >
                                     <option value="Мода и стиль">Мода и стиль</option>
                                     <option value="Сервис">Сервис</option>
                                     <option value="Электроника">Электроника</option>
@@ -52,7 +52,7 @@
 
                             <tr>
                                 <td class = "section"><label >Цена <span class= "signRequired">*</span></label></td>
-                                <td><input class = "input" pattern = "\d+(,\d{2})?" required type="text" name="price" value = "'.$ad['a_price'].'"><br></td>
+                                <td><input class = "input input-txt" pattern = "\d+(,\d{2})?" required type="text" name="price" value = "'.$ad['a_price'].'"><br></td>
                             </tr>
 
                             <tr>
@@ -70,11 +70,11 @@
                             </tr>
                             <tr>
                                 <td class = "section"><label >Описание <span class= "signRequired">*</span></label></td>
-                                <td><textarea class = "input" style = "resize: none; " required rows="8" cols="55" name="descr" >'.$ad['a_descr'].'</textarea><br></td>
+                                <td><textarea class = "input input-desc" style = "resize: none; " required rows="8" cols="55" name="descr" >'.$ad['a_descr'].'</textarea><br></td>
                             </tr>
                             <tr>
                                 <td class = "section"><label >Город <span class= "signRequired">*</span></label></td>
-                                <td><select class = "input" required name="city" id = "city">
+                                <td><select class = "input input-select" required name="city" id = "city">
                                     <option value="Харьков">Харьков</option>
                                     <option value="Киев">Киев</option>
                                     <option value="Днипро">Днипро</option>
@@ -86,13 +86,13 @@
                             </tr>
                             <tr>
                                 <td class = "section"><label >Фото <span class= "signRequired">*</span></label></td>
-                                <td><input class = "input" type="file" id="fileMulti" name="fileMulti[]" multiple accept="image/*" />
+                                <td><input class = "input input-file" type="file" id="fileMulti" name="fileMulti[]" multiple accept="image/*" />
                                 <div class="row"><span id="outputMulti"></span></div></td>
                             </tr>
                         </table>
 
                         <input style = "display: none;" type="text" name="id" value = "'.$ad['a_id'].'"><br>
-                        <input class = "action-button" type="submit" name = "do_edit" value="Опубликовать">
+                        <input class = "my-button create-b" type="submit" name = "do_edit" value="Редактировать">
                     </form>
                 </fieldset>
                 ';
