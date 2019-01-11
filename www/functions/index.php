@@ -1,6 +1,7 @@
 <?php
     $data = $_GET;
     if(isset($data['do_logout'])){
+        closeDB();
         unset($_SESSION['logged_user']);
     }
     if(isset($_GET['name'])){

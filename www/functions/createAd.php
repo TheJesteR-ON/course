@@ -1,9 +1,17 @@
 <?php
     $data = $_POST;
     if(isset($data['do_publish'])){
-
-        saveAd($_SESSION['logged_user']['u_id'], $data['title'], $data['tag'], $data['condition'], $data['city'], $data['descr'], $data['price']);
-        makeDir($data);
+        /*insertInto("`ad`", "`u_id`, `a_title`, `a_tag`,`a_condition`, `a_city`, `a_descr`, `a_views`, `a_price`",
+        "".$_SESSION['logged_user']['u_id'].", ".$data['title'].", ".$data['tag'].", ".$data['condition'].", ".$data['city'].", ".$data['descr'].", ".$data['price']."");*/
+        if(insertInto("`ad`", "`u_id`, `a_title`, `a_tag`,`a_condition`, `a_city`, `a_descr`, `a_views`, `a_price`",
+        "'1', '1', '1', '1', '1', '1', '1', '1'")){
+             showMessage("INFO", "Успешно");
+         }else{
+            showMessage("ERROR", "Неуспешно");
+         }
+        
+         //saveAd($_SESSION['logged_user']['u_id'], $data['title'], $data['tag'], $data['condition'], $data['city'], $data['descr'], $data['price']);
+        //makeDir($data);
         
     }
 
@@ -26,8 +34,8 @@
     function saveAd($in_user, $in_title, $in_tag, $in_cond, $in_city, $in_descr, $in_price){
         global $mysqli;
 
-        $sql = "INSERT INTO `ad` (`a_id`, `u_id`, `a_title`, `a_tag`,`a_condition`, `a_city`, `a_descr`, `a_views`, `a_comment`, `a_price`) 
-        VALUES (NULL, '$in_user', '$in_title', '$in_tag','$in_cond', '$in_city', '$in_descr', '0', '', '$in_price');";
+        $sql = "INSERT INTO `ad` (`a_id`, `u_id`, `a_title`, `a_tag`,`a_condition`, `a_city`, `a_descr`, `a_views`, `a_price`) 
+        VALUES (NULL, '$in_user', '$in_title', '$in_tag','$in_cond', '$in_city', '$in_descr', '0', '$in_price');";
 
         if ($mysqli->query($sql) === TRUE) {
             $er = 0;

@@ -7,6 +7,11 @@
         $password = "Dls2389d";
         $database = "thejester_on";
 
+        /*$servername = "localhost";
+        $username = "id7916279_thejesteron";
+        $password = "Dls2389d";
+        $database = "id7916279_thejester_on";*/
+
         $mysqli = new mysqli($servername, $username, $password, $database);
         if($mysqli->connect_error)
             die("Connection failed: " . $mysqli->connect_error);
