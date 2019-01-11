@@ -1,6 +1,5 @@
 <?php
     require "../functions/connect.php";
-    connectDB();
     require "../functions/chat.php";
 ?>
 <!DOCTYPE html>
@@ -25,7 +24,8 @@
         $this_dialog = getDialog("`id` = ".$_GET['dialogId']."");
 
         if(($this_dialog[0]['status'] == 0) && ($this_dialog[0]['recive'] == $_SESSION['logged_user']['u_id'])){
-            mysqli_query($mysqli,"UPDATE `dialog` SET `status` = 1 WHERE `id` = ".$this_dialog[0]['id']."");
+            update("`dialog`", "`status` = 1","`id` = ".$this_dialog[0]['id']."");
+            //mysqli_query($mysqli,"UPDATE `dialog` SET `status` = 1 WHERE `id` = ".$this_dialog[0]['id']."");
         }
     ?>
 <input style = "display: none" type="text" id="n_dialog" value = "<?php echo $_GET['dialogId'] /* Для взятия номера диалога при ajax */?>">

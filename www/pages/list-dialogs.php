@@ -1,6 +1,5 @@
 <?php
     require "../functions/connect.php";
-    connectDB();
     require "../functions/chat.php";
 
     $dialog = getDialog("`send` = ".$_SESSION['logged_user']['u_id']." OR `recive` = ".$_SESSION['logged_user']['u_id']."  ORDER BY `id` DESC");

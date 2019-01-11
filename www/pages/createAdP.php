@@ -1,6 +1,5 @@
 <?php
     require "../functions/connect.php";
-    connectDB();
     require "../functions/createAd.php";
 
 ?>
@@ -17,12 +16,7 @@
     <?php
         require_once "../blocks/header.php";
     
-        $data = $_POST;
-        if(isset($data['do_publish'])){
-                echo '<div class = "content-block" style = "color: green;">Обьявление было успешно опубликовано на <a href = "../index.php">Главную страницу</a></div>';
-            }
-            else{
-            echo '          
+         ?>
     <fieldset class = "createField apper-block" > 
     <h2 class = "createForm-name">Опубликовать объявление</h2>
     <form class = "createForm" action="createAdP.php" method = "POST" enctype="multipart/form-data">
@@ -90,12 +84,8 @@
         <input class = "my-button create-b" type="submit" name = "do_publish" value="Опубликовать">
     </form>
 </fieldset>
-        ';}
-        ?>
-    <br>
-    <?php require_once "../blocks/footer.php"?>
 
-    
+    <br>    
 
 </body>
 <script src="../js/createAd.js"></script>

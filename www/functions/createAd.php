@@ -3,16 +3,20 @@
     if(isset($data['do_publish'])){
         /*insertInto("`ad`", "`u_id`, `a_title`, `a_tag`,`a_condition`, `a_city`, `a_descr`, `a_views`, `a_price`",
         "".$_SESSION['logged_user']['u_id'].", ".$data['title'].", ".$data['tag'].", ".$data['condition'].", ".$data['city'].", ".$data['descr'].", ".$data['price']."");*/
-        if(insertInto("`ad`", "`u_id`, `a_title`, `a_tag`,`a_condition`, `a_city`, `a_descr`, `a_views`, `a_price`",
-        "'1', '1', '1', '1', '1', '1', '1', '1'")){
+
+        echo"".$_SESSION['logged_user']['u_id'].", '".$data['title']."', '".$data['tag']."', '".$data['condition']."', '".$data['city']."', '".$data['descr']."', 0, ".$data['price']."";
+/*
+        $ins_result = insertInto("`ad`", "`u_id`, `a_title`, `a_tag`,`a_condition`, `a_city`, `a_descr`, `a_views`, `a_price`",
+        "".$_SESSION['logged_user']['u_id'].", '".$data['title']."', '".$data['tag']."', '".$data['condition']."', '".$data['city']."', '".$data['descr']."', 0, ".$data['price']."");
+        if($ins_result){
              showMessage("INFO", "Успешно");
          }else{
-            showMessage("ERROR", "Неуспешно");
+            showMessage("ERROR", "Неуспешно ".$ins_result." ");
          }
         
          //saveAd($_SESSION['logged_user']['u_id'], $data['title'], $data['tag'], $data['condition'], $data['city'], $data['descr'], $data['price']);
-        //makeDir($data);
-        
+        makeDir($data);
+  */      
     }
 
     function makeDir($data){
@@ -29,9 +33,10 @@
                 $temp = '';
                 $tmp = '';
             }
-        //update("`ad`", "`photo_num` = ".$count."", "`a_id` = ".$ad['a_id']."");
+        update("`ad`", "`photo_num` = ".$count."", "`a_id` = ".$ad['a_id']."");
     }
     function saveAd($in_user, $in_title, $in_tag, $in_cond, $in_city, $in_descr, $in_price){
+        connectDB();
         global $mysqli;
 
         $sql = "INSERT INTO `ad` (`a_id`, `u_id`, `a_title`, `a_tag`,`a_condition`, `a_city`, `a_descr`, `a_views`, `a_price`) 
@@ -42,6 +47,7 @@
         } else {
             showMessage("ERROR",$sql."<br>".$mysqli->error);
         }
+        closeDB();
     }
 
     

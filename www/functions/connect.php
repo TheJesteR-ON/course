@@ -20,22 +20,19 @@
     }
 
     function closeDB(){
+        
         global $mysqli;
         $mysqli->close();
     }
 
 /*DataBase END*/ 
 
-/*Регистрация START*/
-    
-
-/*END*/
-
 /*Работа с пользователем*/
     
     function findUser($where){ //Поиск (проверка) пользователя при регистрации и авторизации
+        connectDB();
         global $mysqli;
-
+        
         $sql = "SELECT * FROM `user` WHERE ".$where.";";
         $result = $mysqli->query($sql);
         
@@ -43,34 +40,39 @@
             return $result->fetch_assoc();
         else
             return FALSE;
+        closeDB();
     }
-
-/*END*/  
-
-/*Работа с обьявлением*/
 
     
     
     function findAd($where){
+        connectDB();
         global $mysqli;
 
         $sql = "SELECT * FROM `ad` WHERE ".$where." ";
         $result = $mysqli->query($sql);
+        closeDB();
         if($result == TRUE)
             return $result->fetch_assoc();
         else
             return FALSE;
+
+        
     }
 
     function getAd($limit, $where){
+        connectDB();
         global $mysqli;
 
         $sql = "SELECT * FROM `ad` WHERE ".$where." ORDER BY `a_id` DESC LIMIT $limit";
         $result = $mysqli->query($sql);
+        closeDB();
         if($result == TRUE)
             return resultToArray($result);
         else
             return FALSE;
+
+        
     }
 
     function resultToArray($result){
@@ -81,56 +83,75 @@
     }
 
     function getDialog($where){
+        connectDB();
         global $mysqli;
 
         $sql = "SELECT * FROM `dialog` WHERE ".$where."";
         $result = $mysqli->query($sql);
+        closeDB();
         if($result == TRUE)
             return resultToArray($result);
         else
             return FALSE;
+        
+            
     }
 
     function getMessages($where){
+        connectDB();
         global $mysqli;
 
         $sql = "SELECT * FROM `message` WHERE ".$where."";
         $result = $mysqli->query($sql);
+        closeDB();
         if($result == TRUE)
             return resultToArray($result);
         else
             return FALSE;
+
+            
     }
 
     function getSql($sql){
+        connectDB();
         global $mysqli;
 
         $result = $mysqli->query($sql);
+        closeDB();
         if($result == TRUE)
             return resultToArray($result);
         else
             return FALSE;
+
+            
     }
 
     function doQuery($sql){
+        connectDB();
         global $mysqli;
 
         $result = $mysqli->query($sql);
+        closeDB();
         if($result)
             return $result->fetch_assoc();
         else
             return false;
+
+            
     }
 
 /*END*/
 
 function sendMessage($userId, $message){
+    connectDB();
     global $mysqli;
 
      if($userId == $_SESSION['logged_user']['u_id']){
         $errors[] = "Отправка сообщение самому себе невозможна!";
     }else{
         $dialog = mysqli_query($mysqli,"SELECT * FROM `dialog` WHERE `recive` = ".$userId." AND `send` = ".$_SESSION['logged_user']['u_id']." OR `recive` = ".$_SESSION['logged_user']['u_id']." AND `send` = ".$userId."");
+        //$dialog = selectFrom("*", "`dialog`","`recive` = ".$userId." AND `send` = ".$_SESSION['logged_user']['u_id']." OR `recive` = ".$_SESSION['logged_user']['u_id']." AND `send` = ".$userId."");
+
         $dialog = $dialog->fetch_assoc();
         if($dialog){
             $dialog_id = $dialog['id'];
@@ -150,6 +171,7 @@ function sendMessage($userId, $message){
             
         } 
     }
+    closeDB();
 }
 
 function getThisTime($dateTime){
@@ -183,25 +205,55 @@ echo '
 ';
 
 function insertInto($table, $columns, $values){
+    connectDB();
     global $mysqli;
-    return mysqli_query($mysqli, "INSERT INTO ".$table." (".$columns.") VALUES (".$values.")");
+    $result = mysqli_query($mysqli, "INSERT INTO ".$table." (".$columns.") VALUES (".$values.")");
+
+    closeDB();
+    if($result){
+        return true;
+    }else{
+        return $mysqli->error;
+    }
 }
 function update($table, $set, $where){
+    connectDB();
     global $mysqli;
-    return mysqli_query($mysqli, "UPDATE ".$table." SET ".$set." WHERE ".$where."");
+    $result = mysqli_query($mysqli, "UPDATE ".$table." SET ".$set." WHERE ".$where."");
+    closeDB();
+
+    if($result){
+        return true;
+    }else{
+        return false;
+    }
 }
 function delete($table, $where){
+    connectDB();
     global $mysqli;
-    return mysqli_query($mysqli, "DELETE FROM ".$table." WHERE ".$where."");
+
+    $result = mysqli_query($mysqli, "DELETE FROM ".$table." WHERE ".$where."");
+    closeDB();
+    if($result){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
+
+
 }
 function selectFrom($columns, $tables, $where){
+    connectDB();
     global $mysqli;
 
     $sql = "SELECT ".$columns." FROM ".$tables." WHERE ".$where."";
     $result = $mysqli->query($sql);
+    closeDB();
     if($result == TRUE)
         return resultToArray($result);
     else
         return FALSE;
+
+        
 }
 ?>

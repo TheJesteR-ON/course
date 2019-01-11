@@ -1,6 +1,5 @@
 <?php
     require "../functions/connect.php";
-    connectDB();
     require "../functions/login.php";
 ?>
 <!DOCTYPE html>

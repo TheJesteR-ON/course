@@ -7,8 +7,6 @@
     }
     if(isset($_GET['dialog'])){
         require "connect.php";
-        connectDB();
-
         $message = getMessages("`d_id` = ".$_GET['dialog']." ORDER BY `id` ASC");
         echo'<ul>';
             for($i=0; $i < count($message); $i++){
@@ -37,8 +35,6 @@
     }
      if(isset($_GET['dialog-list'])){
         require "connect.php";
-        connectDB();
-        
         $dialog = getDialog("`send` = ".$_SESSION['logged_user']['u_id']." OR `recive` = ".$_SESSION['logged_user']['u_id']."  ORDER BY `id` DESC");
         if($dialog){
             echo'<table class = "dialog-table">';

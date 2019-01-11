@@ -1,6 +1,5 @@
 <?php
     require "../functions/connect.php";
-    connectDB();
 ?>
 <!DOCTYPE html>
 <html lang="en">

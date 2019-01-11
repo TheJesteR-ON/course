@@ -3,12 +3,11 @@
     if(isset($data['do_logout'])){
         closeDB();
         unset($_SESSION['logged_user']);
+        session_abort();
     }
     if(isset($_GET['name'])){
         require "connect.php";
-        connectDB();
 
-                    
         $ad = getAd(10000, "a_title like '%".$_GET['name']."%' 
         AND a_city like '%".$_GET['city']."%' 
         AND a_tag like '%".$_GET['tag']."%' 
@@ -58,7 +57,6 @@
     
     if(isset($_POST['ad_favorite'])){
         require "connect.php";
-        connectDB();
 
         $ad = selectFrom("*", "`favorite_ad`", "`a_id` = ".$_POST['ad_favorite']." AND `u_id` = ".$_SESSION['logged_user']['u_id']."");
 

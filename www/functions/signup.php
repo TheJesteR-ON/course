@@ -56,12 +56,16 @@
 
 
         function saveUser($in_login, $in_email, $in_password){
+            require "connect.php";
+            connectDB();
             global $mysqli;
     
             $activation = getActivateLink($in_login);
             $sql = "INSERT INTO `user` (`u_id`, `u_fio`, `u_email`, `u_password`,`activation`, `u_numtel`, `u_adres`)
             VALUES (NULL, '$in_login', '$in_email', '$in_password','$activation' , '', '');";
             $mysqli->query($sql);
+
+            closeDB();
     
             mail("$in_email", "Registration", "annow.zzz.com.ua/pages/signupP.php?login=$in_login&key=$activation", "From: jester-on@annow.zzz.com.ua");
         }

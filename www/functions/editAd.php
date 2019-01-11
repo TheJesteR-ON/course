@@ -5,7 +5,6 @@
             addPhoto($data);
         }
     function editAd($data){
-        global $mysqli;
         update("`ad`", "`a_title` = '".$data['title']."', `a_tag` = '".$data['tag']."', `a_descr` = '".$data['descr']."', `a_price` = '".$data['price']."', `a_condition` = '".$data['condition']."', `a_city` = '".$data['city']."'", "`a_id` = '".$data['id']."'");
     }
     function addPhoto($data){

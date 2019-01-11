@@ -18,7 +18,9 @@
     }
 
     function addView(){
+        connectDB();
         global $mysqli;
         mysqli_query($mysqli,"UPDATE `ad` SET `a_views` = `a_views` + 1 WHERE `a_id` = '".$_GET['id']."'");
+        closeDB();
     }
 ?>
