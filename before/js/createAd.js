@@ -26,4 +26,16 @@
         }
     }
     document.getElementById('fileMulti').addEventListener('change', handleFileSelectMulti, false);
+
+    function showSubtype(t_id){
+        
+        $.ajax({url:"/functions/createAd.php?type_id="+t_id, 
+        cache:false, 
+        dataType: "html",
+        success:function(result){
+            $('#subtype_list').html(result); //Присвоение HTML-кода в HTML-код элемента
+        }
+        });
+        
+    };
     

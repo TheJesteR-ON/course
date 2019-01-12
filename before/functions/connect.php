@@ -3,7 +3,7 @@
         global $mysqli;
 
         $servername = "localhost";
-        $username = "TheJesteRON";
+        $username = "root456123789";
         $password = "Dls2389d";
         $database = "thejester_on";
 
@@ -65,7 +65,7 @@
     function getAd($limit, $where){
         global $mysqli;
 
-        $sql = "SELECT * FROM `ad` WHERE ".$where." ORDER BY `a_id` DESC LIMIT $limit";
+        $sql = "SELECT * FROM `ad` WHERE ".$where." LIMIT $limit";
         $result = $mysqli->query($sql);
         if($result == TRUE)
             return resultToArray($result);

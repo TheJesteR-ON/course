@@ -31,8 +31,9 @@
                 <img id = "photo'.$i.'" class = "small-photo" width = "50px" src="../Images/'.$ad['a_id'].'/'.$i.'.jpg" onclick = \'changePhoto(this.id)\'>
                 ';
             }
-            echo'</div>
+            echo'
             </div>
+        </div>
             
             <div class = "detail-descr apper-block">
                 <h2 class = "detail-title">'.$ad['a_title'].'</h2>
@@ -55,7 +56,7 @@
             </div>
             <div class = "apper-block">
                 <p><h3 class = "detail-block-title">Номер объявления: </h3> '.$ad['a_id'].'</p>
-                <p><h3 class = "detail-block-title">Категория: </h3><i class="fas fa-tags"></i> '.$ad['a_tag'].'</p>
+                <p><h3 class = "detail-block-title">Категория: </h3><i class="fas fa-tags"></i> '.$ad['a_tag'].' '.$ad['a_subtag'].'</p>
                 <p><h3 class = "detail-block-title">Cостояние: </h3><i class="fas fa-battery-half"></i> '.$ad['a_condition'].'</p>
                 <p><h3 class = "detail-block-title">Количество просмотров: </h3><i class="far fa-eye"></i> '.$ad['a_views'].'</p>
             </div>
@@ -79,7 +80,7 @@
             ?>
     
         <table class = "my-content-table">
-        <caption style = "font-size: 20px;" class = "table-caption">Прочие oбъявления этого же автора</caption>';
+        <caption style = "font-size: 20px;" class = "table-caption">Прочие oбъявления этого же автора</caption>
             <?php
                 for($i = 0; $i < count($ad1); $i++){
                     echo '

@@ -18,7 +18,7 @@
                 <div '.$visibility.' class = "header-search-block">
                     <button class = "b_advsearch" id = "b_advsearch" onclick = \'advancedSearch();\'>Расширенный поиск</button>
                     <input class = "header-search" type="text" id="search_name" placeholder="Поиск">
-                    <img class = "search-img" width="25px" src="../Images/search.png" alt="Поиск">
+                    <i class="fas fa-search"></i>
                 </div>';
 
                 if(isset($_SESSION['logged_user'])){
@@ -43,7 +43,6 @@
                             <a>Мой кабинет ('.$_SESSION['logged_user']['u_fio'].')</a>
                             <div class="dropdown-menu">
                                 <div> <a id="my_cab" href="../pages/My_page.php">Мои объявления</a></div>
-                                <div><a href="../index.php">Главная</a></div>
                                 <div><a href="../pages/favorite-ad.php">Избранное</a></div>
                                 <div><a href="../pages/list-dialogs.php">Сообщения</a></div>
                                 <div><a href="../index.php?do_logout=logout">Выход</a></div>

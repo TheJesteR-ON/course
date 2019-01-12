@@ -7,7 +7,10 @@
     //Выход (условие внутри файла)
     require "functions/index.php";
 
-    $ad = getAd(1000, "a_delete = 'FALSE'");
+    $ad = getAd(1000, "a_delete = 'FALSE' ORDER BY `a_views` DESC");
+
+    $types = selectFrom("*", "`types`", " 1");
+    $subtypes = selectFrom("*", "`subtypes`", "`t_id` = 1");
    
     $price = doQuery("SELECT MAX(a_price), MIN(a_price) FROM `ad`");
 
@@ -33,6 +36,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
     <script src="js/addFavorite.js"></script>
+    <script src="../js/createAd.js"></script>
 </head>
 <body>
     <?php
@@ -47,24 +51,34 @@
                 <option value=""></option>
                 <option value="Харьков">Харьков</option>
                 <option value="Киев">Киев</option>
-                <option value="Днипро">Днипро</option>
+                <option value="Днепр">Днипро</option>
                 <option value="Львов">Львов</option>
                 <option value="Одесса">Одесса</option>
                 <option value="Винница">Винница</option>
-                <option value="Чернигов">Чернигов</option>   
+                <option value="Чернигов">Чернигов</option>
+                  
             </select>
             <h3>Категория</h3>
             <select  class = "search-item" name="tag" id="tag">
                 <option value=""></option>
-                <option value="Мода и стиль">Мода и стиль</option>
-                <option value="Сервис">Сервис</option>
-                <option value="Электроника">Электроника</option>
-                <option value="Животные">Животные</option>
-                <option value="Недвижимость">Недвижимость</option>
-                <option value="Транспорт">Транспорт</option>
-                <option value="Работа">Работа</option>
-                <option value="Хобби, отдых и спорт">Хобби, отдых и спорт</option>
+<?php
+                for($i = 0; $i < count($types); $i++){
+                    echo'<option value="'.$types[$i]['t_name'].'" onclick = \'showSubtype('.$types[$i]['t_id'].');\'>'.$types[$i]['t_name'].'</option>';
+                }
+?>
             </select>
+
+            <h3>Подкатегория</h3>
+            <select  class = "search-item" name="subtag" id = "subtype_list">
+                <option value=""></option>
+<?php
+                
+                for($i = 0; $i < count($subtypes); $i++){
+                        echo '<option value="'.$subtypes[$i]['st_name'].'">'.$subtypes[$i]['st_name'].'</option>';
+                }
+?>
+            </select>
+            
             <h3>Цена</h3>
             <span>От </span><input type ="number" name="fromprice" id="fromprice" value = "<?php echo($min_price) ?>">
             <span> ДО </span><input type="number" name="toprice" id="toprice" value = "<?php echo($max_price) ?>"><br>
@@ -75,9 +89,17 @@
         </form>
         <br>
     </div>
+
+    <h3>Сортировка</h3>
+    <select id = "sorting-list">
+        <option id = "reset" value = "`a_views` DESC">Популярные</option>
+        <option value = "`a_price` ASC">От дешевых к дорогим</option>
+        <option value = "`a_price` DESC">От дорогих к дешевым</option>
+        <option value = "`a_time` DESC">Новые</option>
+    </select>
     
     <div class="showResult content">
-        <table class ="content-table">
+        <table class ="content-table" id ="content-table">
             <tr class = "content-row">
             <?php
                 for($i = 0; $i < count($ad); $i++){
@@ -85,6 +107,9 @@
                     $style = "";
                     if($f_ad){
                         $style = "style = \"background-color: #2fbdb4;\"";
+                    }
+                    if(isset($_SESSION['logged_user']) == FALSE){
+                        $style = "style = \"display: none;\"";
                     }
                     echo '
                     <td class = "content-block">
@@ -117,6 +142,7 @@
 
 </body>
 <script>
+
     function advancedSearch(){
         if(document.getElementById('search-block').style.display == "none"){
             document.getElementById('search-block').style.display = "block";
@@ -125,6 +151,8 @@
 
             document.getElementById('search_city').options[0].selected = true;
             document.getElementById('tag').options[0].selected = true;
+            document.getElementById('subtype_list').options[0].selected = true;
+            
 
             document.getElementById('fromprice').value = '<? echo $min_price; ?>';
             document.getElementById('toprice').value = '<? echo $max_price; ?>';

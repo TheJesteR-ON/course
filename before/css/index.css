@@ -40,10 +40,10 @@ header div a{
     border: none;
     height: 30px;
 }
-.search-img{
-    position: absolute;
-    right: 3px;
-    top: 3px;
+.fa-search{
+    color: #000000;
+    font-size: 17px;
+    padding: 4px;
 }
 .header-button{
     padding: 8px 13px;
@@ -55,13 +55,15 @@ header div a{
     background: #37d3c8;
 }
 
-
+.dropdown{
+    position: relative;
+}
 .dropdown-menu{
     text-decoration: none;
     display: none;
     position: absolute;
-    right: 20px;
-    top: 30px;
+    right: 0px;
+    top: 20px;
     width: 160px;
     background: white;
     box-shadow: 0 0 5px grey;
@@ -276,7 +278,7 @@ footer div{
     display: none;
 }
 .search-form{
-    height: 300px;
+    height: 350px;
     padding-top: 50px; 
     overflow: hidden;
     width: 60%;
@@ -578,6 +580,7 @@ footer div{
 .my-content-block{
     height: 200px;
     overflow: hidden;
+    transition: 0.5s;
 }
 .my-content-table{
     width: 70%;

@@ -6,15 +6,16 @@
     if(isset($_GET['name'])){
         require "connect.php";
         connectDB();
-
-                    
+  
         $ad = getAd(10000, "a_title like '%".$_GET['name']."%' 
         AND a_city like '%".$_GET['city']."%' 
-        AND a_tag like '%".$_GET['tag']."%' 
+        AND a_tag like '%".$_GET['tag']."%'
+        AND a_subtag like '%".$_GET['subtag']."%' 
         AND a_price >= ".$_GET['fprice']." 
         AND a_price <= ".$_GET['tprice']."
         AND (DATE(a_time) between '".$_GET['fdate']."' AND '".$_GET['tdate']."')
-        AND a_delete = 'FALSE'");
+        AND a_delete = 'FALSE' ORDER BY ".$_GET['kind_sort']."");
+        
 
         if($ad){
             echo'
@@ -25,6 +26,9 @@
                     $style = "";
                     if($f_ad){
                         $style = "style = \"background-color: #2fbdb4;\"";
+                    }
+                    if(isset($_SESSION['logged_user']) == FALSE){
+                        $style = "style = \"display: none;\"";
                     }
                     echo '
                     <td class = "content-block">

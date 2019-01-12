@@ -3,6 +3,9 @@
     connectDB();
     require "../functions/createAd.php";
 
+    $types = selectFrom("*", "`types`", " 1");
+    $subtypes = selectFrom("*", "`subtypes`", "`t_id` = 1");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,15 +31,28 @@
 
             <tr>
                 <td class = "section"><label >Категория <span class= "signRequired">*</span></label></td>
-                <td><select class = "input-select input" required name="tag">
-                    <option value="Мода и стиль">Мода и стиль</option>
-                    <option value="Сервис">Сервис</option>
-                    <option value="Электроника">Электроника</option>
-                    <option value="Животные">Животные</option>
-                    <option value="Недвижимость">Недвижимость</option>
-                    <option value="Транспорт">Транспорт</option>
-                    <option value="Работа">Работа</option>
-                    <option value="Хобби, отдых и спорт">Хобби, отдых и спорт</option>
+                <td>
+                <select class = "input-select input" required name="tag">
+                <?php 
+                for($i = 0; $i < count($types); $i++){
+                    echo'<option value="'.$types[$i]['t_name'].'" onclick = \'showSubtype('.$types[$i]['t_id'].');\'>'.$types[$i]['t_name'].'</option>';
+                }
+                ?>                    
+                </select><br>
+                </td>
+            </tr>
+
+            <tr id = "row-subtypes">
+                <td class = "section "><label >Подкатегория <span class= "signRequired">*</span></label></td>
+                <td>
+                <select class = "input-select input" id = "subtype_list" required name="subtag">
+                <?php
+                    for($i = 0; $i < count($subtypes); $i++){
+                        echo '
+                            <option value="'.$subtypes[$i]['st_name'].'">'.$subtypes[$i]['st_name'].'</option>
+                        ';
+                    }
+                ?>
                 </select><br></td>
             </tr>
 
@@ -67,7 +83,7 @@
                 <td><select class = "input-select input" required name="city">
                     <option value="Харьков">Харьков</option>
                     <option value="Киев">Киев</option>
-                    <option value="Днепр">Днипро</option>
+                    <option value="Днепр">Днепр</option>
                     <option value="Львов">Львов</option>
                     <option value="Одесса">Одесса</option>
                     <option value="Винница">Винница</option>
