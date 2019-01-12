@@ -15,6 +15,11 @@
         }
     }
     function addPhoto($data){
+        
+        if (is_dir("../Images/".$data['id']."")){
+            rmdir("../Images/".$data['id']."");
+        }
+
 
         mkdir("../Images/".$data['id']."");
         $count = 0;

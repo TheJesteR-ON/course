@@ -63,7 +63,7 @@
             VALUES (NULL, '$in_login', '$in_email', '$in_password','$activation' , '', '');";
             $mysqli->query($sql);
     
-            mail("$in_email", "Registration", "annow.zzz.com.ua/pages/signupP.php?login=$in_login&key=$activation", "From: jester-on@annow.zzz.com.ua");
+            mail("$in_email", "Registration", "annow.kl.com.ua/pages/signupP.php?login=$in_login&key=$activation", "From: jester-on@annow.kl.com.ua");
         }
     
         function getActivateLink($login){ //Создание кода активации для ссылки

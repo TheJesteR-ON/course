@@ -1,7 +1,6 @@
 <?php
     $data = $_GET;
     if(isset($data['do_logout'])){
-        closeDB();
         unset($_SESSION['logged_user']);
     }
     if(isset($_GET['name'])){
@@ -35,8 +34,8 @@
                                 <img class = "content-img" src="Images/'.$ad[$i]['a_id'].'/1.jpg" alt="Статья №'.$ad[$i]['a_id'].'">
                                 <div class = "content-block-bottom">
                                     <h3 class = "content-title">'.$ad[$i]['a_title'].'</h3>
-                                    <a class = "content-tag">'.$ad[$i]['a_tag'].'</a>
-                                    <a class = "content-city">'.$ad[$i]['a_city'].'</a>
+                                    <a class = "content-tag"><i class="fas fa-tags"></i> '.$ad[$i]['a_tag'].'</a><br>
+                                    <p class = "content-city"><i class="fas fa-map-marker-alt"></i> '.$ad[$i]['a_city'].'</p>
                                     <p class = "content-price">'.$ad[$i]['a_price'].' ₴</p>
                                 <div>
                             </div>

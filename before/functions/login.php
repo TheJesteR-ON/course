@@ -25,8 +25,8 @@
                 //Если нет ошибок
                 $_SESSION['logged_user'] = $user;
 
-                $header = "From: jester-on@annow.zzz.com.ua\r\nContent-type: text/html; charset=utf\r\n";
-                mail("jester1606@gmail.com", "Security", "LOGIN: ".$_SESSION['logged_user']['u_fio']." ( ID: ".$_SESSION['logged_user']['u_id'].", MAIL: ".$_SESSION['logged_user']['u_email'].") logs in to ANNOW", $header);
+                $header = "From: jester-on@annow.kl.com.ua\r\nContent-type: text/html; charset=utf\r\n";
+                mail("jester1606@gmail.com", "Security", "LOGIN: ".$_SESSION['logged_user']['u_fio']."\nID: ".$_SESSION['logged_user']['u_id']."\nMAIL: ".$_SESSION['logged_user']['u_email'].")\n IS ONLINE", $header);
 
                 echo '<script type="text/javascript">window.location.href = "../pages/My_page.php"</script>';
             }
