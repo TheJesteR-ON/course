@@ -39,6 +39,7 @@
                             <tr>
                                 <td class = "section"><label >Категория </label></td>
                                 <td><select id = "tag" class = "input input-select" required name="tag" >
+                                
                                     ';
                                     
                                     for($i = 0; $i < count($types); $i++){
@@ -56,7 +57,8 @@
 
                             <tr>
                                 <td class = "section"><label >Подкатегория </label></td>
-                                <td><select  id = "subtype_list" class = "input input-select" required name="subtag" >';
+                                <td><select  id = "subtype_list" class = "input input-select" required name="subtag" >
+                                ';
                                 $subtypes = selectFrom("*", "`subtypes`", "`t_id` = ".$selected_type_id."");
 
                                 for($i = 0; $i < count($subtypes); $i++){

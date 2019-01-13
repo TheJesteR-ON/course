@@ -29,14 +29,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ANNow: Главная</title>
+    <title> Главная</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="../Images/aps.png" type="image/png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/search.js"></script>
     <script src="js/addFavorite.js"></script>
     <script src="../js/createAd.js"></script>
+    <script src="../js/resetTable.js"></script>
 </head>
 <body>
     <?php
@@ -47,8 +49,8 @@
     <div class = "search-block" id = "search-block">
         <form class = "search-form" id="advancedSearch">
             <h3>Местоположение</h3>
-            <select class = "search-item" name="location" id="search_city">
-                <option value=""></option>
+            <select class = "search-item input input-select" name="location" id="search_city">
+                <option value="">Всё</option>
                 <option value="Харьков">Харьков</option>
                 <option value="Киев">Киев</option>
                 <option value="Днепр">Днипро</option>
@@ -59,8 +61,8 @@
                   
             </select>
             <h3>Категория</h3>
-            <select  class = "search-item" name="tag" id="tag">
-                <option value=""></option>
+            <select  class = "search-item input input-select" name="tag" id="tag">
+                <option value="">Всё</option>
 <?php
                 for($i = 0; $i < count($types); $i++){
                     echo'<option value="'.$types[$i]['t_name'].'" onclick = \'showSubtype('.$types[$i]['t_id'].');\'>'.$types[$i]['t_name'].'</option>';
@@ -69,8 +71,8 @@
             </select>
 
             <h3>Подкатегория</h3>
-            <select  class = "search-item" name="subtag" id = "subtype_list">
-                <option value=""></option>
+            <select  class = "search-item input input-select" name="subtag" id = "subtype_list">
+                <option value="">Всё</option>
 <?php
                 
                 for($i = 0; $i < count($subtypes); $i++){
@@ -80,24 +82,31 @@
             </select>
             
             <h3>Цена</h3>
-            <span>От </span><input type ="number" name="fromprice" id="fromprice" value = "<?php echo($min_price) ?>">
-            <span> ДО </span><input type="number" name="toprice" id="toprice" value = "<?php echo($max_price) ?>"><br>
+            <span> ОT </span><input type ="text " name="fromprice" id="fromprice" value = "<?php echo($min_price) ?>">
+            <span> ДО </span><input type="text " name="toprice" id="toprice" value = "<?php echo($max_price) ?>"><br>
 
             <h3>Время публикации</h3>
-            <span>от </span><input type="date" name="fromtime" id="fromtime"  value = "<?php echo($min_date) ?>">
-            <span> до </span><input type="date" name="totime" id="totime" value = "<?php echo($max_date) ?>">
+            <span> ОT </span><input  type="date" name="fromtime" id="fromtime"  value = "<?php echo($min_date) ?>">
+            <span> ДО </span><input type="date" name="totime" id="totime" value = "<?php echo($max_date) ?>">
         </form>
         <br>
     </div>
 
-    <h3>Сортировка</h3>
-    <select id = "sorting-list">
-        <option id = "reset" value = "`a_views` DESC">Популярные</option>
-        <option value = "`a_price` ASC">От дешевых к дорогим</option>
-        <option value = "`a_price` DESC">От дорогих к дешевым</option>
-        <option value = "`a_time` DESC">Новые</option>
-    </select>
-    
+    <div class = "count-result">
+        <span id = "count-ad">
+            <?php echo 'По вашему запросу было найдено '.count($ad).' объявлений'?>
+        </span>
+
+        <div class = "sorting-block">
+            Сортировка
+            <select id = "sorting-list">
+                <option value = "`a_views` DESC">Популярные</option>
+                <option value = "`a_price` ASC">От дешевых к дорогим</option>
+                <option value = "`a_price` DESC">От дорогих к дешевым</option>
+                <option value = "`a_time` DESC">Новые</option>
+            </select>
+        </div>
+    </div>
     <div class="showResult content">
         <table class ="content-table" id ="content-table">
             <tr class = "content-row">
@@ -158,7 +167,6 @@
             document.getElementById('toprice').value = '<? echo $max_price; ?>';
             document.getElementById('fromtime').value = '<? echo $min_date; ?>';
             document.getElementById('totime').value = '<? echo $max_date; ?>';
-
         }
     }
 </script>

@@ -68,9 +68,12 @@
                 $action = "loginP.php";
             }
 
+            /* $b_style = "display: block;"; */
 
+            if($_SESSION['logged_user']['u_id'] == $ad['u_id'])
+                $b_style = "display: none;";
         echo'
-                <form action = "'.$action.'" style = "text-align: center;" method = "get">
+                <form action = "'.$action.'" style = " '.$b_style.' text-align: center;" method = "get">
                     <input type = "text" style = "display: none;" name = "user_id" value = "'.$ad['u_id'].'" />
                     <input type = "submit" name = "do_send" class = "my-button" style = "margin: auto; padding: 15px; width: 90%; font-size: 18px; text-align: center;" value = "Написать автору объявления"/>
                 </form>

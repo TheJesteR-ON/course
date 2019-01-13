@@ -56,7 +56,7 @@
         }else{
             require_once "../blocks/no_ad.php";
         }
-                    
+        echo'<p style = "display: none;" id = "block-count">По вашему запросу было найдено '.count($ad).' объявлений</p>';     
     }
     
     if(isset($_POST['ad_favorite'])){

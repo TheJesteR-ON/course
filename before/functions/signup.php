@@ -43,11 +43,11 @@
         }
         
         //Активация
-        if(isset($_GET['login']) && isset($_GET['key'])){
-            $login = $_GET['login'];
+        if(isset($_GET['id']) && isset($_GET['key'])){
+            $id = $_GET['id'];
             $key = $_GET['key'];
-            if(checkActivateLink($login, $key)){
-                activateUser($login);
+            if(checkActivateLink($id, $key)){
+                activateUser($id);
                 echo '<script type="text/javascript">window.location.href = "../pages/loginP.php?active=activation"</script>';
             }else{
                 showMessage("ERROR", "Активация провалена");
@@ -62,8 +62,13 @@
             $sql = "INSERT INTO `user` (`u_id`, `u_fio`, `u_email`, `u_password`,`activation`, `u_numtel`, `u_adres`)
             VALUES (NULL, '$in_login', '$in_email', '$in_password','$activation' , '', '');";
             $mysqli->query($sql);
-    
-            mail("$in_email", "Registration", "annow.kl.com.ua/pages/signupP.php?login=$in_login&key=$activation", "From: jester-on@annow.kl.com.ua");
+
+            $user_id = selectFrom("`u_id`", "`user`", "`u_id` = (SELECT MAX(`u_id`) FROM `user`)");
+
+            $user_id = $user_id[0]['u_id'];
+
+            $header = "From: jester-on@annow.kl.com.ua\r\nContent-type: text/html; charset=utf\r\n";
+            mail("".$in_email."", "Registration", "annow.kl.com.ua/pages/signupP.php?id=$user_id&key=$activation", $header);
         }
     
         function getActivateLink($login){ //Создание кода активации для ссылки
@@ -71,21 +76,21 @@
             return md5($secret.$login);
         }
     
-        function checkActivateLink($in_login, $key){//Сравнение кода активации с почты и с БД
-            $real_key = getActivateLinkFromTable($in_login);
+        function checkActivateLink($in_id, $key){//Сравнение кода активации с почты и с БД
+            $real_key = getActivateLinkFromTable($in_id);
             return $real_key === $key;
         }
     
-        function getActivateLinkFromTable($login){//Получение кода активации с БД
+        function getActivateLinkFromTable($id){//Получение кода активации с БД
             global $mysqli;
-            $row = findUser("`u_fio` = '$login'"); 
+            $row = findUser("`u_id` = '$id'"); 
             return $row['activation'];
         }
     
-        function activateUser($login){
+        function activateUser($id){
             global $mysqli;
-    
-            $result_set = $mysqli->query("UPDATE `user` SET `activation` = '' WHERE `u_fio` = '$login'");
+
+            $result_set = $mysqli->query("UPDATE `user` SET `activation` = '' WHERE `u_id` = '$id'");
         }
         
 

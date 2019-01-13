@@ -33,6 +33,7 @@
                 <td class = "section"><label >Категория <span class= "signRequired">*</span></label></td>
                 <td>
                 <select class = "input-select input" required name="tag">
+                <option value="">Всё</option>
                 <?php 
                 for($i = 0; $i < count($types); $i++){
                     echo'<option value="'.$types[$i]['t_name'].'" onclick = \'showSubtype('.$types[$i]['t_id'].');\'>'.$types[$i]['t_name'].'</option>';
@@ -46,6 +47,7 @@
                 <td class = "section "><label >Подкатегория <span class= "signRequired">*</span></label></td>
                 <td>
                 <select class = "input-select input" id = "subtype_list" required name="subtag">
+                    <option value="">Всё</option>
                 <?php
                     for($i = 0; $i < count($subtypes); $i++){
                         echo '

@@ -64,6 +64,9 @@
     echo'</table>';
     }
     else{
+        if(isset($_GET['checkMyAd'])){
+            echo '<script type="text/javascript">window.location.href = "../index.php"</script>';
+        }
         require_once "../blocks/no_ad.php";
         showMessage("INFO", "Для использования данной страницы следует сперва опубликовать собственное объявление");
     }

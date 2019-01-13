@@ -20,7 +20,7 @@
         require "connect.php";
         connectDB();
         $subtypes = selectFrom("*", "`subtypes`", "`t_id` = ".$_GET['type_id']."");
-        echo'<option value=""></option>';
+        echo'<option value="">Всё</option>';
         for($i = 0; $i < count($subtypes); $i++){
             echo '
                 <option value="'.$subtypes[$i]['st_name'].'">'.$subtypes[$i]['st_name'].'</option>

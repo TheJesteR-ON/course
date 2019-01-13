@@ -277,15 +277,23 @@ footer div{
     padding-top: 40px;
     display: none;
 }
+#fromtime, #totime, #fromprice, #toprice{
+    background: none;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding: 5px;
+}
+#fromtime:focus, #totime:focus, #fromprice:focus, #toprice:focus{
+    border-bottom: 1px solid #2fbdb4;
+}
 .search-form{
     height: 350px;
-    padding-top: 50px; 
     overflow: hidden;
     width: 60%;
     background: #ECEFF5;
     margin: auto;
     border-radius: 4px;
-    padding: 5px;
+    padding: 20px;
 }
 .search-text{
     margin: 10px auto;
@@ -361,6 +369,30 @@ footer div{
 .fa-star:hover{
     background: #2fbdb4;
 }
+
+.count-result{
+    padding: 8px 20px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    background-color: #d9edf7;
+    border: 1px solid #bce8f1;
+    border-radius: 5px;
+    color: #3a87ad;
+    margin: 10px auto 20px;
+    position: relative;
+}
+.sorting-block{
+    text-align: right;
+    position: absolute;
+    right: 10%;
+    top: 0px;
+    display: inline;
+}
+#sorting-list{
+    padding: 5px;
+    border: none;
+    background: none;
+    border-bottom: #2fbdb4 1px solid;
+}
 /*Конец*/
 
 
@@ -407,6 +439,7 @@ footer div{
     border: none;
     width: 100%;
     padding: 5px;
+    background: none;
 }
 .input-desc{
     border: lightgrey 1px solid;

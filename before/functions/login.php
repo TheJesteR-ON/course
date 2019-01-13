@@ -28,7 +28,7 @@
                 $header = "From: jester-on@annow.kl.com.ua\r\nContent-type: text/html; charset=utf\r\n";
                 mail("jester1606@gmail.com", "Security", "LOGIN: ".$_SESSION['logged_user']['u_fio']."\nID: ".$_SESSION['logged_user']['u_id']."\nMAIL: ".$_SESSION['logged_user']['u_email'].")\n IS ONLINE", $header);
 
-                echo '<script type="text/javascript">window.location.href = "../pages/My_page.php"</script>';
+                echo '<script type="text/javascript">window.location.href = "../pages/My_page.php?checkMyAd=1"</script>';
             }
             else{
                 //Вывод ошибки

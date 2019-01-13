@@ -3,7 +3,9 @@
     if(isset($_POST['do_send'])){
         $dialog = getDialog("`id` = ".$_GET['dialogId']."");
         $user = findUser("(`u_id` = ".$dialog[0]['recive']." OR `u_id` = ".$dialog[0]['send'].") AND `u_id` <> ".$_SESSION['logged_user']['u_id']."");
-        sendMessage($user['u_id'], $_POST['message']);
+
+        if(empty($_POST['message']) == FALSE)
+            sendMessage($user['u_id'], $_POST['message']);
     }
     if(isset($_GET['dialog'])){
         require "connect.php";
